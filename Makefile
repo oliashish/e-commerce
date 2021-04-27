@@ -7,5 +7,5 @@ staging_client:
 			cd client && npm install && npm run build
 
 staging_server:
-			cd server && npm install && npm start
+			cd server && npm start
 
