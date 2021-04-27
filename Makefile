@@ -4,8 +4,8 @@ development:
 
 
 staging_client: 
-			cd ../client && npm install && npm run build
+			cd client && npm install && npm run build
 
 staging_server:
-			npm start
+			cd server && npm install && npm start
 
