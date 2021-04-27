@@ -4,8 +4,8 @@ development:
 
 
 staging_client: 
-			cd && cd client && npm install && npm run build
+			cd ../client && npm install && npm run build
 
 staging_server:
-			nodemon server.js
+			npm start
 
