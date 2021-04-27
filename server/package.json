@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "cd .. && make staging_client && make staging_server"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false cd .. && make staging_client && make staging_server"
     
   },
   "keywords": [],
