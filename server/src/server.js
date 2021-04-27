@@ -12,7 +12,7 @@ app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/test", route);
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "staging") {
     app.use(express.static("../../client/build"));
 }
 app.use("/*", (req, res) => {
