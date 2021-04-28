@@ -11,7 +11,7 @@ const App = () => {
     };
 
     useEffect(() => {
-        fetchAPI("http://localhost:5000/test");
+        fetchAPI("/test");
     });
     return <div className="App">{message}</div>;
 };
