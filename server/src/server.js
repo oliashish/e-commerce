@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
     app.use(express.static("../../client/build"));
 }
 app.use("/*", (req, res) => {
-    res.send(path.join(__dirname, "..", "client", "build", "index.html"));
+    res.send(path.join(__dirname, "..", "..", "client", "build", "index.html"));
 });
 
 app.listen(PORT, () => {
