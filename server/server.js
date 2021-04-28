@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 
-const route = require("./routes/routes");
+const route = require("./src/routes/routes");
 
 const PORT = process.env.PORT || 5000;
 
@@ -19,6 +19,4 @@ app.use("/*", (req, res) => {
     res.send(path.join(__dirname, "..", "..", "client", "build", "index.html"));
 });
 
-app.listen(PORT, () => {
-    console.log(`App running on port : ${PORT}`);
-});
+app.listen(PORT);
