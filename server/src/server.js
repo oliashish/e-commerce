@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 
-// app.use("/test", route);
+app.use("/test", route);
 // if (process.env.NODE_ENV === "production") {
 //     app.use(express.static("../../client/build"));
 // }
@@ -22,9 +22,9 @@ app.use(express.urlencoded({ extended: true }));
 
 db.sequelize
     .sync()
-    .then(console.log("db connected successfully"))
-    .catch((err) => {
-        console.log(error);
+    .then()
+    .catch((err,res) => {
+        alert(error);
     });
 
 app.listen(PORT);
