@@ -1,19 +1,21 @@
 import "./App.css";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
+axios.defaults.baseURL = "http://localhost:5000";
 
 const App = () => {
-    const [message, setMessage] = useState([]);
-
-    const fetchAPI = async (url) => {
-        const result = await axios.get(url);
-        setMessage(JSON.stringify(result.data));
+    const [message, setMessage] = useState("");
+    const GetData = async () => {
+        const response = await axios.get("/test");
+        setMessage(response.data.message);
     };
-
-    useEffect(() => {
-        fetchAPI("/test");
-    });
-    return <div className="App">{message}</div>;
+    return (
+        <div className="App">
+            <button onClick={GetData}>Get Data From Backend</button>
+            <p>{message}</p>
+        </div>
+    );
 };
 
 export default App;
