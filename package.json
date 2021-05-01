@@ -6,10 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "forever restartall server/src/server.js",
-    "server": "cd server/src && nodemon server.js",
-    "client": "cd client && npm start",
+    "build-server": "npm install",
+    "build-client": "npm install && npm run build",
     "dev": "concurrently \"npm run client\" \"npm run server\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true cd client && npm install && npm run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true cd client && npm run build-client && cd ../server && npm run build-server && npm run start"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/oliashish/e-commerce#readme",
   "dependencies": {
-    "concurrently": "^6.0.2"
+    "concurrently": "^6.0.2", 
+    "forever": "3.0.4"
   }
 }
