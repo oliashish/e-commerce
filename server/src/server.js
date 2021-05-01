@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const db = require("./models");
+//const db = require("./models");
 
 const route = require("./routes/routes");
 
@@ -20,11 +20,11 @@ app.use("*", (req, res) => {
     res.send(path.join(__dirname, "..", "..", "client", "build", "index.html"));
 });
 
-db.sequelize
-    .sync()
-    .then()
-    .catch((err,res) => {
-        alert(error);
-    });
+// db.sequelize
+//     .sync()
+//     .then()
+//     .catch((err,res) => {
+//         alert(error);
+//     });
 
 app.listen(PORT);

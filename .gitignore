@@ -3,10 +3,15 @@
 # dependencies
 /client/node_modules
 /server/node_modules
+
 /server/.env
+
 /client/.env
 /node_modules
+
 /server/src/config
+/server/src/models
+
 
 
 
