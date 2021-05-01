@@ -1,7 +1,8 @@
 const route = require("express").Router();
 
 route.get("/test", (req, res) => {
-    res.json({
+    console.log("inside  reoute");
+    res.send({
         message: "This is the initial setup and is working great..!!!",
     });
 });
