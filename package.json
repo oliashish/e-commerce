@@ -5,11 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "forever restartall server/src/server.js",
-    "build-server": "npm install",
-    "build-client": "npm install && npm run build",
-    "dev": "concurrently \"npm run client\" \"npm run server\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true cd client && npm run build-client && cd ../server && npm run build-server && npm run start"
+    "start": "cd server && npm install && forever restartall src/server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",

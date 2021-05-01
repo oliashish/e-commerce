@@ -12,13 +12,13 @@ app.use(cors());
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/test", route);
-// if (process.env.NODE_ENV === "production") {
-//     app.use(express.static("../../client/build"));
-// }
-// app.use("/*", (req, res) => {
-//     res.send(path.join(__dirname, "..", "..", "client", "build", "index.html"));
-// });
+app.use("/", route);
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("../../client/build"));
+}
+app.use("*", (req, res) => {
+    res.send(path.join(__dirname, "..", "..", "client", "build", "index.html"));
+});
 
 db.sequelize
     .sync()
