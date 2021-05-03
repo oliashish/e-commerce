@@ -21,8 +21,6 @@
     },
     "homepage": "https://github.com/oliashish/e-commerce#readme",
     "dependencies": {
-        "chokidar": "^3.5.1",
-        "concurrently": "^6.0.2",
-        "forever": "^3.0.4"
+        "concurrently": "^6.0.2"
     }
 }
