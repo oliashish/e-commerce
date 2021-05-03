@@ -1,27 +1,27 @@
 {
-  "name": "e-commerce",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd server && npm install && node src/server.js",
-    "dev": "concurrently \"cd client && npm start\" && \"cd server/src && nodemon server.js\"",
-    "heroku-postbuild": "cd client && npm install && npm run build && cd .."
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/oliashish/e-commerce.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/oliashish/e-commerce/issues"
-  },
-  "homepage": "https://github.com/oliashish/e-commerce#readme",
-  "dependencies": {
-    "concurrently": "^6.0.2",
-    "forever": "^3.0.4"
-  }
+    "name": "e-commerce",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "cd server && npm install && forever start src/server.js",
+        "dev": "concurrently \"cd client && npm start\" && \"cd server/src && nodemon server.js\"",
+        "heroku-postbuild": "cd client && npm install && npm run build && cd .."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/oliashish/e-commerce.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/oliashish/e-commerce/issues"
+    },
+    "homepage": "https://github.com/oliashish/e-commerce#readme",
+    "dependencies": {
+        "concurrently": "^6.0.2",
+        "forever": "^3.0.4"
+    }
 }
