@@ -1,19 +1,16 @@
-import "./App.css";
+import React from "react";
 import axios from "axios";
-import { useState } from "react";
+import { Switch, Route } from "react-router-dom";
+
+import "./App.css";
+import Home from "./pages/Home";
 
 axios.defaults.baseURL = "http://localhost:5000";
 
 const App = () => {
-    const [message, setMessage] = useState("");
-    const GetData = async () => {
-        const response = await axios.get("/test");
-        setMessage(response.data.message);
-    };
     return (
         <div className="App">
-            <button onClick={GetData}>Get Data From Backend</button>
-            <p>{message}</p>
+            <Home />
         </div>
     );
 };
