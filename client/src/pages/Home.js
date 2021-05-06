@@ -9,6 +9,9 @@ const Home = () => {
     return (
         <div className="home-page">
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <Link className="navbar-brand" to="/">
+                    <img src={logo} alt="AURA-APEX" className="logo" />
+                </Link>
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -20,9 +23,6 @@ const Home = () => {
                 >
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <Link className="navbar-brand" to="/">
-                    <img src={logo} alt="AURA-APEX" className="logo" />
-                </Link>
 
                 <div
                     className="collapse navbar-collapse"
@@ -46,7 +46,7 @@ const Home = () => {
                         })}
                     </ul>
                 </div>
-                <form className="form-inline my-2 my-lg-0 mr-5">
+                <form className="form-inline my-2 my-lg-0 form-alignment">
                     <input
                         className="form-control mr-sm-2"
                         type="search"
