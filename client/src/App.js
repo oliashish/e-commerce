@@ -1,19 +1,18 @@
-import "./App.css";
+import React from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { Switch, Route } from "react-router-dom";
+
+import "./App.css";
+import Home from "./pages/Home";
+
+axios.defaults.baseURL = "http://localhost:5000";
 
 const App = () => {
-    const [message, setMessage] = useState([]);
-
-    const fetchAPI = async (url) => {
-        const result = await axios.get(url);
-        setMessage(JSON.stringify(result.data));
-    };
-
-    useEffect(() => {
-        fetchAPI("/test");
-    });
-    return <div className="App">{message}</div>;
+    return (
+        <div className="App">
+            <Home />
+        </div>
+    );
 };
 
 export default App;
