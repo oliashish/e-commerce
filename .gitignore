@@ -5,7 +5,7 @@
 /server/.env
 /client/.env
 /node_modules
-/server/src/config
+
 
 
 
