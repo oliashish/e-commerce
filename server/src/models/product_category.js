@@ -3,19 +3,16 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
     class product_category extends Model {
         static associate({ product }) {
-            this.belongsTo(product, { foreignKey: "product_id" });
+            this.belongsTo(product);
         }
     }
     product_category.init(
         {
-            uuid: {
+            category_id: {
                 type: DataTypes.UUID,
                 defaultValue: DataTypes.UUIDV4,
-            },
-            category_id: {
-                type: DataTypes.INTEGER,
-                allowNull: false,
                 primaryKey: true,
+                allowNull: false,
             },
             category_type: {
                 type: DataTypes.STRING,
