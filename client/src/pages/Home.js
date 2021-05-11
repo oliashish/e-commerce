@@ -1,11 +1,12 @@
 import React from "react";
-
-import "../styles/Home.css";
+import Carousal from "../components/Carousal";
+import Header from "../components/Header";
 
 const Home = () => {
     return (
         <div className="home-page">
-            <h1>Helloo and welcome to my e-commerce site</h1>
+            <Header />
+            <Carousal />
         </div>
     );
 };
