@@ -1,14 +1,13 @@
 import React from "react";
-import Carousal from "../components/Carousal";
-import Header from "../components/Header";
+
+import Header from "../components/mainHeader/Header";
 
 const Home = () => {
-    return (
-        <div className="home-page">
-            <Header />
-            <Carousal />
-        </div>
-    );
+   return (
+      <div className="home-page">
+         <Header />
+      </div>
+   );
 };
 
 export default Home;
