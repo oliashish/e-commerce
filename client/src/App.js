@@ -10,7 +10,9 @@ axios.defaults.baseURL = "http://localhost:5000";
 const App = () => {
     return (
         <div className="App">
-            <Home />
+            <Switch>
+                <Route exact path="/" component={Home} />
+            </Switch>
         </div>
     );
 };
