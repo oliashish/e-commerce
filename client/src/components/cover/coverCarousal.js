@@ -23,11 +23,6 @@ const CoverCarousal = () => {
                     );
                 })}
             </Fade>
-            <div className="w-full flex justify-center items-center mx-auto">
-                <p className="lg:text-3xl mt-3 text-gray-600 z-10 sm:text-2xl">
-                    Get your favourites
-                </p>
-            </div>
         </div>
     );
 };
