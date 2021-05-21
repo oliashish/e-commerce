@@ -12,9 +12,14 @@ SwiperCore.use([Autoplay]);
 SwiperCore.use([Thumbs]);
 
 const CategoryCard = () => {
+    const [thumbsSwiper, setThumbsSwiper] = useState(null);
     return (
         <section className="w-full mx-auto flex justify-around items-center mt-20 border-b-2 pb-8">
-            <Swiper {...SwiperConfig} thumbs={Swiper}>
+            <Swiper
+                {...SwiperConfig}
+                thumbs={{ swiper: thumbsSwiper }}
+                onSwiper={setThumbsSwiper}
+            >
                 {data.productCategory.map((category) => {
                     return (
                         <SwiperSlide className="">
