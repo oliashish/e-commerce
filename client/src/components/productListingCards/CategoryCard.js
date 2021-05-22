@@ -5,10 +5,10 @@ import SwiperBreakpoints from "./swiperConfig";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
-import "swiper/components/pagination/pagination.min.css";
-import SwiperCore, { Pagination, Autoplay, Mousewheel } from "swiper/core";
 
-SwiperCore.use([Pagination, Autoplay, Mousewheel]);
+import SwiperCore, { Autoplay } from "swiper/core";
+
+SwiperCore.use([Autoplay]);
 
 const CategoryCard = () => {
     return (
@@ -20,7 +20,6 @@ const CategoryCard = () => {
                     delay: 2000,
                     disableOnInteraction: true,
                 }}
-                pagination={{ clickable: true }}
                 {...SwiperBreakpoints}
             >
                 {data.productCategory.map((category) => {
@@ -35,15 +34,15 @@ const CategoryCard = () => {
                                     />
                                 </div>
 
-                                <p className="text-2xl mt-5 font-serif font-semibold">
+                                <h2 className="text-2xl mt-5 font-serif font-semibold">
                                     {category.type}
-                                </p>
+                                </h2>
                                 <p className="text-lg opacity-70 text-opacity-10">
                                     {category.description}
                                 </p>
-                                <p className="text-2xl font-serif font-semibold">
+                                <h2 className="text-2xl font-serif font-semibold">
                                     {category.discount}
-                                </p>
+                                </h2>
                             </div>
                         </SwiperSlide>
                     );
