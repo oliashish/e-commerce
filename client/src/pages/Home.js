@@ -3,6 +3,7 @@ import React from "react";
 import CoverCarousal from "../components/cover/coverCarousal";
 import Header from "../components/mainHeader/Header";
 import CategoryCard from "../components/productListingCards/CategoryCard";
+import ProductItems from "../components/productListingCards/ProductItems";
 
 const Home = () => {
     return (
@@ -10,6 +11,7 @@ const Home = () => {
             <Header />
             <CoverCarousal />
             <CategoryCard />
+            <ProductItems />
         </div>
     );
 };
