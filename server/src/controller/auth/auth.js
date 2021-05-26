@@ -5,13 +5,23 @@
 */
 
 const bcrypt = require("bcrypt");
+const { Users } = require("../../models");
 
 const SignUp = async (data) => {
     const { username, email, password, contact } = data;
     const salt = await bcrypt.genSalt(15);
-    const hashedPassword = bcrypt.hash(password, salt);
-
-    // TODO: save all user information in db including hashed password.
+    const hashedPassword = (await bcrypt.hash(password, salt)).toString();
+    try {
+        const newUser = await Users.create({
+            username,
+            email,
+            password: hashedPassword,
+            contact_number: contact,
+        });
+        return newUser;
+    } catch (error) {
+        return error.message;
+    }
 };
 
 module.exports = {
