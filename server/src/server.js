@@ -12,7 +12,7 @@ app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../../client/build")));
 
-app.use("/authenticate", auth);
+app.use("/api/authenticate", auth);
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("../../client/build"));
