@@ -6,20 +6,14 @@
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-require("dotenv").config((path = "/"));
+const { accesstoken } = require("./genToken");
 
 const { Users } = require("../../models");
 
 const SignUp = async (data) => {
     const { username, email, password, contact } = data;
     const salt = await bcrypt.genSalt(15);
-    const hashedPassword = bcrypt.hash(password, salt).toString();
-
-    // validations (if any)
-
-    // ----------------------------------------------------------
-
-    // signing up user
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     try {
         const newUser = await Users.create({
@@ -28,7 +22,8 @@ const SignUp = async (data) => {
             password: hashedPassword,
             contact_number: contact,
         });
-        return newUser;
+        const _refresh_token = await accesstoken(newUser);
+        return [_refresh_token, newUser];
     } catch (error) {
         return error.message;
     }
@@ -51,21 +46,7 @@ const SignIn = async (data) => {
     // sending 'or' incorrect for security reasons
     if (!user || !isValid) return "Email or Password incorrect. Try Again.";
 
-    // jwt signing
-    const access_token = jwt.sign(
-        { _id: user.id },
-        process.env.JWT_ACCESS_TOKEN_KEY,
-        {
-            expiresIn: process.env.JWT_ACCESS_TOKEN_LIFE,
-        }
-    );
-    let refreshToken = jwt.sign(
-        { _id: user.id },
-        process.env.JWT_REFRESH_TOKEN_SECRET,
-        {
-            expiresIn: process.env.JWT_REFRESH_TOKEN_LIFE,
-        }
-    );
+    // jwt refresh token signing
 };
 
 module.exports = {
