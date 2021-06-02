@@ -5,9 +5,7 @@
 */
 
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const { accesstoken } = require("./genToken");
-
+const { accessToken, refrestoken } = require("./genToken");
 const { Users } = require("../../models");
 
 const SignUp = async (data) => {
@@ -22,8 +20,10 @@ const SignUp = async (data) => {
             password: hashedPassword,
             contact_number: contact,
         });
-        const _refresh_token = await accesstoken(newUser);
-        return [_refresh_token, newUser];
+
+        const access_token = await accessToken(newUser);
+
+        return [newUser, accessToken];
     } catch (error) {
         return error.message;
     }
@@ -31,22 +31,25 @@ const SignUp = async (data) => {
 const SignIn = async (data) => {
     const { email, password } = data;
 
-    // checking for user existence through email as emails are unique
+    // checking for user existence through email
+    try {
+        let user = await Users.findOne({
+            where: {
+                email,
+            },
+        });
 
-    let user = await Users.findOne({
-        where: {
-            email,
-        },
-    });
+        // comparing password
+        const isValid = bcrypt.compare(password, user.password);
 
-    // comparing password
+        // sending 'or' incorrect for security reasons
+        if (!user || !isValid) return "Email or Password incorrect. Try Again.";
 
-    const isValid = bcrypt.compare(password, user.password);
-
-    // sending 'or' incorrect for security reasons
-    if (!user || !isValid) return "Email or Password incorrect. Try Again.";
-
-    // jwt refresh token signing
+        const refreshToken = refrestoken(user);
+        return [user, refreshToken];
+    } catch (error) {
+        return error;
+    }
 };
 
 module.exports = {

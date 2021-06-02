@@ -6,9 +6,9 @@ const authAction = (userState, history) => {
         const response = await SignUp(userState);
         const data = response.data;
 
-        if (data.success) {
-            dispatch({ type: SIGNUP_SUCCESS, payload: data.success });
-            history.push("/");
+        if (data) {
+            dispatch({ type: SIGNUP_SUCCESS, payload: data });
+            // history.push("/");
         } else {
             dispatch({ type: GET_ERROR, payload: data });
         }

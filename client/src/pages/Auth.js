@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { LogOut, LogIn } from "../helper/api/auth";
 
 import authAction from "../state/auth/authAction";
 
@@ -97,7 +99,49 @@ const Auth = (props) => {
                     </form>
                 </div>
                 <div className="w-1/2">
-                    <p className="text-2xl">LogIn</p>
+                    <form
+                        className="flex-col justify-between"
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            console.log(userState);
+                            LogIn(userState);
+                        }}
+                    >
+                        <div>
+                            <label className="text-xl">email : </label>
+                            <input
+                                className="border-4 text-lg"
+                                type="text"
+                                placeholder="enter your email"
+                                onChange={(e) => {
+                                    const email = e.target.value;
+                                    userState["email"] = email;
+                                }}
+                            />
+                        </div>
+                        <div>
+                            <label className="text-xl">password : </label>
+                            <input
+                                className="border-4 text-lg"
+                                type="password"
+                                placeholder="enter your password"
+                                onChange={(e) => {
+                                    const password = e.target.value;
+
+                                    userState["password"] = password;
+                                }}
+                            />
+                        </div>
+                        <button type="submit" className="text-2xl">
+                            LogIn
+                        </button>
+                    </form>
+                </div>
+
+                <div className="">
+                    <p className="text-xl" onClick={LogOut}>
+                        logout
+                    </p>
                 </div>
             </div>
         </div>

@@ -1,26 +1,20 @@
 import { SIGNUP_SUCCESS } from "../actionConstants";
 
 let initial_auth_state = {
-    isLoggedIn: localStorage.getItem("isLoggedIn"),
-    token: localStorage.getItem("token"),
-    user: {
-        username: "",
-        email: "",
-        id: "",
-    },
-    fail: {
-        msg: "",
-    },
+    isLoggedIn: false,
+    username: "",
+    email: "",
+    id: "",
 };
 
 const authReducer = (state = initial_auth_state, action) => {
     switch (action.type) {
         case SIGNUP_SUCCESS:
-            localStorage.setItem("isLoggedIn", true);
-
             return {
-                token: localStorage.setItem("token", action.payload[0]),
-                user: action.payload[1],
+                isLoggedIn: true,
+                username: action.payload.username,
+                id: action.payload.id,
+                email: action.payload.email,
             };
 
         default:
