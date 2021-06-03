@@ -10,7 +10,9 @@ const { Users } = require("../../models");
 
 const SignUp = async (data) => {
     const { username, email, password, contact } = data;
+
     const salt = await bcrypt.genSalt(15);
+
     const hashedPassword = await bcrypt.hash(password, salt);
 
     try {

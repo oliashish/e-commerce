@@ -8,7 +8,7 @@ import authAction from "../state/auth/authAction";
 
 const mapStateToProps = (state) => {
     return {
-        user: state.authReducer,
+        user: state.auth,
     };
 };
 

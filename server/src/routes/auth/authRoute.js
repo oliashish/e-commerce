@@ -9,7 +9,7 @@ route.post("/signup", async (req, res) => {
     res.cookie("_access_token", accessToken, {
         httpOnly: true,
         maxAge: 60 * 60 * 24 * 1000,
-    }); 
+    });
     res.json(newUser);
 });
 

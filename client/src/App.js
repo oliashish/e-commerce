@@ -12,12 +12,12 @@ axios.defaults.withCredentials = true;
 
 const mapStateToProps = (state) => {
     return {
-        isLoggedIn: state.authReducer.isLoggedIn,
+        user: state.auth,
     };
 };
 
 const App = (props) => {
-    const [isLoggedIn, setLoggedIn] = useState(props.isLoggedIn);
+    const [user, setUser] = useState(props);
 
     return (
         <div className="App">

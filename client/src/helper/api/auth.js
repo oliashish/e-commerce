@@ -1,10 +1,7 @@
 import axios from "axios";
 
 export const SignUp = async (data) => {
-    const response = await axios.post("/api/authenticate/signup", {
-        data,
-        Credential: "include",
-    });
+    const response = await axios.post("/api/authenticate/signup", data);
     return response;
 };
 
