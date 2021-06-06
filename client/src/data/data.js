@@ -4,9 +4,7 @@ import mensshoescategory from "../images/mensshoescategory.jpg";
 import sportswear from "../images/sportswear.jpg";
 import haircare from "../images/haircare.jpg";
 
-let data;
-
-export default data = {
+export const data = {
     productCategory: [
         {
             image: womensdresses,
