@@ -24,7 +24,7 @@ const CategoryCard = () => {
             >
                 {data.productCategory.map((category) => {
                     return (
-                        <SwiperSlide className="">
+                        <SwiperSlide className="" key={category.type}>
                             <div className="lg:w-full px-10 mx-auto h-96 mb-5 text-center">
                                 <div className="w-60 mx-auto h-64 md:h-56 mt-5 rounded-full shadow-2xl">
                                     <img
