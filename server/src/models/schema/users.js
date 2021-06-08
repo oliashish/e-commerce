@@ -1,37 +1,41 @@
-"use strict";
 const { Model } = require("sequelize");
+
 module.exports = (sequelize, DataTypes) => {
-    class product_category extends Model {
-        static associate({ product }) {
-            this.belongsTo(product);
-        }
+    class Users extends Model {
+        static associate(models) {}
     }
-    product_category.init(
+    Users.init(
         {
-            category_id: {
+            id: {
                 type: DataTypes.UUID,
                 defaultValue: DataTypes.UUIDV4,
+                allowNull: false,
                 primaryKey: true,
-                allowNull: false,
             },
-            category_type: {
+            username: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            catergory_main: {
+            email: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                unique: true,
+            },
+            password: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            overall_cateogory: {
+            contact_number: {
                 type: DataTypes.STRING,
                 allowNull: false,
+                unique: true,
             },
         },
         {
             sequelize,
-            tableName: "product_category",
-            modelName: "product_category",
+            tableName: "users",
+            modelName: "Users",
         }
     );
-    return product_category;
+    return Users;
 };
