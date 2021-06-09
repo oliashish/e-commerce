@@ -1,6 +1,7 @@
 import React from "react";
+import { data } from "../../data/data";
 
-const IndividualProductDetails = () => {
+const IndividualProductDetails = (props) => {
     return (
         <section className="text-gray-600 body-font overflow-hidden">
             <div className="container px-5 py-24 mx-auto">
