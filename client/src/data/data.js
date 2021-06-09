@@ -1,8 +1,8 @@
-import womensdresses from "../images/womensdresses.jpeg";
-import mensshirtcategory from "../images/mensshirtcategory.jpg";
-import mensshoescategory from "../images/mensshoescategory.jpg";
-import sportswear from "../images/sportswear.jpg";
-import haircare from "../images/haircare.jpg";
+import womensdresses from "../images/womensdresses-compressed.jpg";
+import mensshirtcategory from "../images/mensshirtcategory-compressed.jpg";
+import mensshoescategory from "../images/mensshoescategory-compressed.jpg";
+import sportswear from "../images/sportswear-compressed.jpg";
+import haircare from "../images/haircare-compressed.jpg";
 
 export const data = {
     productCategory: [
