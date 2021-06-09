@@ -4,7 +4,7 @@ import { persistStore } from "redux-persist";
 
 import rootReducer from "./rootReducer/index";
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = compose;
 
 const store = createStore(
     rootReducer,
