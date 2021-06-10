@@ -4,7 +4,7 @@ import { data } from "../../data/data";
 
 const ProductItems = () => {
     return (
-        <section className="text-gray-600 body-font flex justify-around items-center flex-wrap">
+        <section className="text-gray-600 body-font flex justify-around items-center flex-wrap p-5">
             {data.productItems.map((item) => {
                 return (
                     <div className="sm:w-full md:w-1/3 lg:w-1/5 m-5">
