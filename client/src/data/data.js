@@ -15,6 +15,14 @@ import womenjeans from "../images/womensjeans.jpg";
 import makeup from "../images/makeup.jpeg";
 import shoe from "../images/shoes.jpeg";
 
+// product by brand image imports
+
+import nike from "../images/nikelogo.jpg";
+import addias from "../images/addidas.png";
+import zara from "../images/zara.png";
+import lv from "../images/lv.png";
+import levis from "../images/levis.jpeg";
+
 export const data = {
     productCategory: [
         {
@@ -106,56 +114,31 @@ export const data = {
             price: "2500",
         },
     ],
-    productsWithTag: [
+    brands: [
         {
-            title: "",
-            image: "",
-            tag: "",
+            title: "NIKE",
+            image: nike,
+            description: "shoes, tee's, sportswears etc",
         },
         {
-            title: "",
-            image: "",
-            tag: "",
+            title: "ZARA",
+            image: zara,
+            description: "tops, dresses, bags etc",
         },
         {
-            title: "",
-            image: "",
-            tag: "",
+            title: "LOUIS VUITTON",
+            image: lv,
+            description: "bags, perfumes, sunglasses etc",
         },
         {
-            title: "",
-            image: "",
-            tag: "",
+            title: "LEVI'S",
+            image: levis,
+            description: "jeans, joggers, shirts etc",
         },
         {
-            title: "",
-            image: "",
-            tag: "",
-        },
-        {
-            title: "",
-            image: "",
-            tag: "",
-        },
-        {
-            title: "",
-            image: "",
-            tag: "",
-        },
-        {
-            title: "",
-            image: "",
-            tag: "",
-        },
-        {
-            title: "",
-            image: "",
-            tag: "",
-        },
-        {
-            title: "",
-            image: "",
-            tag: "",
+            title: "ADDIDAS",
+            image: addias,
+            description: "shoes, lowers, sportswears etc",
         },
     ],
 };
