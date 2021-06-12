@@ -1,13 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { data } from "../../data/data";
 
 const ProductItems = () => {
+    const history = useHistory();
+
     return (
         <section className="text-gray-600 body-font flex justify-around items-center flex-wrap p-5">
             {data.productItems.map((item) => {
                 return (
-                    <div className="sm:w-full md:w-1/3 lg:w-1/5 m-5">
+                    <div
+                        className="sm:w-full md:w-1/3 lg:w-1/5 m-5"
+                        onClick={() => {
+                            history.push(`/${item.title}`, item);
+                        }}
+                    >
                         <div className="flex flex-wrap -m-4">
                             <div className="lg:w-full md:w-full p-4 w-full">
                                 <Link

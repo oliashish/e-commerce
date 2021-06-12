@@ -1,6 +1,7 @@
 import React from "react";
 import { data } from "../../data/data";
 
+
 const ProdByBrands = () => {
     return (
         <section className="w-full md:p-10 mt-5 border-t-4">
