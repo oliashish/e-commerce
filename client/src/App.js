@@ -8,7 +8,11 @@ import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 
 import Header from "./components/mainHeader/Header";
+
 import Payment from "./payment/Payment";
+
+import IndividualProductDetails from "./components/productDetails/IndividualProductDetails";
+
 
 axios.defaults.baseURL = "http://localhost:5000";
 axios.defaults.withCredentials = true;
@@ -20,7 +24,15 @@ const App = (props) => {
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/authenticate" component={Auth} />
-                <Route exact paht="/pay" component={Payment} />
+
+                <Route exact path="/pay" component={Payment} />
+
+                <Route
+                    exact
+                    path="/:productname"
+                    component={IndividualProductDetails}
+                />
+
             </Switch>
         </div>
     );
