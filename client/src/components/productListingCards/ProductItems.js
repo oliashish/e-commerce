@@ -4,7 +4,7 @@ import { data } from "../../data/data";
 
 const ProductItems = () => {
     const history = useHistory();
-    console.log(history);
+
     return (
         <section className="text-gray-600 body-font flex justify-around items-center flex-wrap p-5">
             {data.productItems.map((item) => {
