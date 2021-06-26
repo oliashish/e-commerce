@@ -12,7 +12,7 @@ const Navlinks = () => {
                         className="p-4 text-xl"
                         key={link.toLowerCase()}
                     >
-                        {link}
+                        <h3> {link} </h3>
                     </Link>
                 );
             })}
