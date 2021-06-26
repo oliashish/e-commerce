@@ -1,5 +1,3 @@
-"use strict";
-
 const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
@@ -20,7 +18,8 @@ if (config.use_env_variable) {
     );
 }
 
-fs.readdirSync(__dirname)
+fs.readdirSync(__dirname + "/schema")
+
     .filter((file) => {
         return (
             file.indexOf(".") !== 0 &&
@@ -29,7 +28,7 @@ fs.readdirSync(__dirname)
         );
     })
     .forEach((file) => {
-        const model = require(path.join(__dirname, file))(
+        const model = require(path.join(__dirname + "/schema", file))(
             sequelize,
             Sequelize.DataTypes
         );
