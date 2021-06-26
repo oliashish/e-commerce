@@ -5,6 +5,8 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 require("dotenv").config({ path: "../.env" });
 
+const paymentRoute = require("./routes/stripe");
+
 
 const paymentRoute = require("./routes/stripe");
 
@@ -43,6 +45,9 @@ app.use(
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../../client/build")));
+
+
+app.use("/pay", paymentRoute);
 
 
 app.use("/pay", paymentRoute);
