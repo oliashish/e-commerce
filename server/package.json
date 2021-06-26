@@ -3,8 +3,13 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
-    "scripts": {},
-    "keywords": [],
+
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+        
+    },
+  "scripts": {},
+      "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
@@ -21,7 +26,11 @@
         "jsonwebtoken": "^8.5.1",
         "mysql2": "^2.2.5",
         "sequelize": "^6.6.2",
-        "stripe": "^8.154.0",
+
+        "stripe": "^8.148.0",
+
+ 
+
         "uuid": "^8.3.2"
     }
 }
