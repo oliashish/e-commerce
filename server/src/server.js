@@ -5,14 +5,16 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 require("dotenv").config({ path: "../.env" });
 
-<<<<<<< HEAD
 const paymentRoute = require("./routes/stripe");
-=======
+
+
+const paymentRoute = require("./routes/stripe");
+
 // routes and db imports
 const db = require("./database/dbConnection");
 const auth = require("./routes/auth/authRoute");
 const payment = require("./routes/payment/stripe");
->>>>>>> 10e2705230dafda01494631667c9dd7e3f20d516
+
 
 const PORT = process.env.PORT || 5000;
 
@@ -44,14 +46,17 @@ app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../../client/build")));
 
-<<<<<<< HEAD
+
 app.use("/pay", paymentRoute);
-=======
+
+
+app.use("/pay", paymentRoute);
+
 // routing
 
 app.use("/api/authenticate", auth);
 app.use("/api/payment", payment);
->>>>>>> 10e2705230dafda01494631667c9dd7e3f20d516
+
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("../../client/build"));

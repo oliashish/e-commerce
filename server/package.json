@@ -3,14 +3,9 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
-<<<<<<< HEAD
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
-        
     },
-=======
-    "scripts": {},
->>>>>>> 10e2705230dafda01494631667c9dd7e3f20d516
     "keywords": [],
     "author": "",
     "license": "ISC",
@@ -28,11 +23,7 @@
         "jsonwebtoken": "^8.5.1",
         "mysql2": "^2.2.5",
         "sequelize": "^6.6.2",
-<<<<<<< HEAD
         "stripe": "^8.148.0",
-=======
-        "stripe": "^8.154.0",
->>>>>>> 10e2705230dafda01494631667c9dd7e3f20d516
         "uuid": "^8.3.2"
     }
 }
