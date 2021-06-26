@@ -7,14 +7,10 @@ require("dotenv").config({ path: "../.env" });
 
 const paymentRoute = require("./routes/stripe");
 
-
-const paymentRoute = require("./routes/stripe");
-
 // routes and db imports
 const db = require("./database/dbConnection");
 const auth = require("./routes/auth/authRoute");
 const payment = require("./routes/payment/stripe");
-
 
 const PORT = process.env.PORT || 5000;
 
@@ -46,17 +42,10 @@ app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../../client/build")));
 
-
-app.use("/pay", paymentRoute);
-
-
-app.use("/pay", paymentRoute);
-
 // routing
 
 app.use("/api/authenticate", auth);
 app.use("/api/payment", payment);
-
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("../../client/build"));
