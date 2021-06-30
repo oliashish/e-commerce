@@ -1,6 +1,6 @@
 module.exports = {
     up: async (queryInterface, Sequelize) => {
-        await queryInterface.createTable("users", {
+        await queryInterface.createTable("discount", {
             id: {
                 type: Sequelize.UUID,
                 defaultValue: Sequelize.UUIDV4,
@@ -8,17 +8,23 @@ module.exports = {
                 primaryKey: true,
                 unique: true,
             },
-            username: {
+
+            name: {
                 type: Sequelize.STRING,
+                allowNull: false,
             },
-            email: {
+            desc: {
                 type: Sequelize.STRING,
+                allowNull: false,
             },
-            password: {
+            percent: {
                 type: Sequelize.STRING,
+                allowNull: false,
             },
-            contact_number: {
-                type: Sequelize.BIGINT,
+            active: {
+                type: Sequelize.BOOLEAN,
+                allowNull: false,
+                unique: true,
             },
             createdAt: {
                 allowNull: false,
@@ -31,6 +37,6 @@ module.exports = {
         });
     },
     down: async (queryInterface, Sequelize) => {
-        await queryInterface.dropTable("users");
+        await queryInterface.dropTable("discount");
     },
 };

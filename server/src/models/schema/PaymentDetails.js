@@ -1,11 +1,9 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-    class Users extends Model {
+    class PaymentDetails extends Model {
         static associate({ OrderDetail }) {
-            this.hasOne(OrderDetail, {
-                foreignKey: "order_id",
-            });
+            this.belongsTo(OrderDetail);
         }
     }
     Users.init(
@@ -15,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
                 defaultValue: DataTypes.UUIDV4,
                 allowNull: false,
                 primaryKey: true,
+                unique: true,
             },
 
             amount: {
@@ -28,9 +27,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         {
             sequelize,
-            tableName: "users",
-            modelName: "Users",
+            tableName: "payment_details",
+            modelName: "PaymentDetails",
         }
     );
-    return Users;
+    return PaymentDetails;
 };
