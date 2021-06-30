@@ -16,11 +16,11 @@ module.exports = (sequelize, DataTypes) => {
                 unique: true,
             },
             name: {
-                type: DataTypes.Strings,
+                type: DataTypes.STRING,
                 allowNull: false,
             },
             type: {
-                type: DataTypes.Strings,
+                type: DataTypes.STRING,
                 allowNull: false,
             },
         },
