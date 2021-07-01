@@ -12,8 +12,9 @@ const ProductItems = () => {
                     <div
                         className="sm:w-full md:w-1/3 lg:w-1/5 m-5"
                         onClick={() => {
-                            history.push(`/${item.title}`, item);
+                            history.push(`/product/${item.title}`, item);
                         }}
+                        key={item.title}
                     >
                         <div className="flex flex-wrap -m-4">
                             <div className="lg:w-full md:w-full p-4 w-full">

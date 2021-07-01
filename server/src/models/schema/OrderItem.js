@@ -2,11 +2,11 @@ const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
     class OrderItem extends Model {
-        static associate({ OrderDetail, Product }) {
+        static associate({ OrderDetails, Product }) {
             this.belongsTo(Product, {
                 foreignKey: "prod_id",
             });
-            this.belongsTo(OrderDetail, {
+            this.belongsTo(OrderDetails, {
                 foreignKey: "order_id",
             });
         }

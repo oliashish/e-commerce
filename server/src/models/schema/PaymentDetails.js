@@ -2,11 +2,11 @@ const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
     class PaymentDetails extends Model {
-        static associate({ OrderDetail }) {
-            this.belongsTo(OrderDetail);
+        static associate({ OrderDetails }) {
+            this.belongsTo(OrderDetails);
         }
     }
-    Users.init(
+    PaymentDetails.init(
         {
             id: {
                 type: DataTypes.UUID,
