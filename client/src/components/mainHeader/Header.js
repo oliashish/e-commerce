@@ -6,6 +6,7 @@ import Logo from "./Logo";
 import Navlinks from "./Navlinks";
 import ToggleButton from "./ToggleButton";
 import UserInfoIcons from "./UserInfoIcons";
+import SearchItem from "./SearchItem";
 
 const Header = () => {
     const toggle = useSelector((state) => state.sideBarReducer);
@@ -20,6 +21,7 @@ const Header = () => {
                 <ToggleButton />
                 <Logo />
                 <Navlinks />
+                <SearchItem />
                 <UserInfoIcons />
             </nav>
         </header>

@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false,
             },
             pin_cod: {
-                type: DataTypes.INTERGER,
+                type: DataTypes.INTEGER,
                 allowNull: false,
             },
             country: {

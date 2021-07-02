@@ -1,5 +1,4 @@
 import React from "react";
-import { data } from "../../data/data";
 
 const IndividualProductDetails = (props) => {
     const item = props.location.state;

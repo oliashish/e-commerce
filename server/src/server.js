@@ -5,8 +5,6 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 require("dotenv").config({ path: "../.env" });
 
-const paymentRoute = require("./routes/stripe");
-
 // routes and db imports
 const db = require("./database/dbConnection");
 const auth = require("./routes/auth/authRoute");

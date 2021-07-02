@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     class Product extends Model {
         static associate({
             Discount,
-            ProductInventory,
+            Inventory,
             ProductCategory,
             Cart,
             OrderItem,
@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
             this.belongsTo(ProductCategory, {
                 foreignKey: "cat_id",
             });
-            this.belongsTo(ProductInventory, {
+            this.belongsTo(Inventory, {
                 foreignKey: "inventry_id",
             });
             this.belongsTo(Discount, {
