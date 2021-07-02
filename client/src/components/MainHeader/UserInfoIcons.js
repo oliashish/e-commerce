@@ -17,7 +17,7 @@ const UserInfoIcons = (props) => {
                     <span className=""></span>
                 </ShoppingCartOutlined>
             </Link>
-            <Link>
+            <Link to="/">
                 <div className="w-10 h-10 ml-3 rounded-full">
                     {props.profile.isLoggedIn ? (
                         <img

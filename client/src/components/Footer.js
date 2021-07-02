@@ -35,9 +35,9 @@ const Footer = () => {
                             role="img"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                             className="w-6 h-6"
                             viewBox="0 0 24 24"
                         >
@@ -52,9 +52,9 @@ const Footer = () => {
                     >
                         <svg
                             fill="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                             className="w-6 h-6"
                             viewBox="0 0 24 24"
                         >
@@ -70,9 +70,9 @@ const Footer = () => {
                         <svg
                             fill="currentColor"
                             stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="0"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="0"
                             className="w-6 h-6"
                             viewBox="0 0 24 24"
                         >

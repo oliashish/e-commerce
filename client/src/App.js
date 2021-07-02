@@ -9,7 +9,7 @@ import Auth from "./pages/Auth";
 
 import Payment from "./payment/Payment";
 
-import IndividualProductDetails from "./components/productDetails/IndividualProductDetails";
+import IndividualProductDetails from "./components/ProductDetails/IndividualProductDetails";
 import { Cart } from "./components/Cart/Cart";
 import Protected from "./helper/routes/Protected";
 
