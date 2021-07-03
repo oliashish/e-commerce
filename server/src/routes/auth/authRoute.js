@@ -1,5 +1,5 @@
 const route = require("express").Router();
-const verify = require("../../controller/auth/verify.jwt");
+const verify = require("../../middleware/verify.jwt");
 const { emailExists } = require("../../controller/auth/validation");
 const { SignUp, SignIn } = require("../../controller/auth/auth");
 
