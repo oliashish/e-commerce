@@ -12,7 +12,9 @@ const {
 // create new product - only admin access
 route.post("/createproduct", upload.single("image"), async (req, res) => {
     const body = req.body;
-    const file = req.file;
+    const image = req.file;
+    const product = await createProduct(body, image);
+    res.send(product);
 });
 
 // get all products
