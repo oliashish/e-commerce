@@ -28,10 +28,13 @@ module.exports = {
                 type: Sequelize.STRING,
                 allowNull: false,
             },
+            brand: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
             price: {
                 type: Sequelize.FLOAT,
                 allowNull: false,
-                unique: true,
             },
             total_available: {
                 type: Sequelize.INTEGER,

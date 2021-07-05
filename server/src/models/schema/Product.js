@@ -36,10 +36,13 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
+            brand: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
             price: {
                 type: DataTypes.FLOAT,
                 allowNull: false,
-                unique: true,
             },
             total_available: {
                 type: DataTypes.INTEGER,
