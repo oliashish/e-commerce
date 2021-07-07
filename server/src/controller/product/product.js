@@ -6,7 +6,7 @@ const createProduct = async (body, image) => {
     try {
         const product = await Product.create({
             cat_id,
-            desc_id,
+            disc_id,
             name,
             image,
             desc,
@@ -18,14 +18,23 @@ const createProduct = async (body, image) => {
         throw err;
     }
 };
-const getAllProducts = () => {};
+const getAll = async () => {
+    try {
+        const products = await Product.findAll({
+            exclude: "DiscountId",
+        });
+        return products;
+    } catch (err) {
+        throw err;
+    }
+};
 const GetProductById = () => {};
 const updateProduct = () => {};
 const deleteProduct = () => {};
 
 module.exports = {
     createProduct,
-    getAllProducts,
+    getAll,
     GetProductById,
     updateProduct,
     deleteProduct,

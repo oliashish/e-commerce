@@ -2,7 +2,7 @@ const db = require("../models");
 
 const database = () => {
     db.sequelize
-        .sync()
+        .authenticate()
         .then(console.log("database connected!!!"))
         .catch((err) => {
             console.log(err);
