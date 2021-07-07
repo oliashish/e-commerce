@@ -5,9 +5,9 @@
     "main": "/server/src/server.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "npm install && npm audit fix && cd server/src/ && node server.js",
+        "start": "npm install && cd ./server/src/ && nodemon server.js",
         "dev": "concurrently \"cd client && npm start\" && \"cd server/src && nodemon server.js\"",
-        "heroku-postbuild": "cd client && npm install && npm run build && cd .."
+        "heroku-postbuild": "cd client && npm install && npm run build"
     },
     "repository": {
         "type": "git",
