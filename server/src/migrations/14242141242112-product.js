@@ -12,13 +12,8 @@ module.exports = {
                 type: Sequelize.UUID,
                 allowNull: false,
             },
-            inventry_id: {
-                type: Sequelize.UUID,
-                allowNull: false,
-            },
             disc_id: {
                 type: Sequelize.UUID,
-                allowNull: false,
             },
 
             name: {
@@ -33,10 +28,17 @@ module.exports = {
                 type: Sequelize.STRING,
                 allowNull: false,
             },
+            brand: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
             price: {
                 type: Sequelize.FLOAT,
                 allowNull: false,
-                unique: true,
+            },
+            total_available: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
             },
             createdAt: {
                 allowNull: false,

@@ -2,22 +2,14 @@ const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
     class Product extends Model {
-        static associate({
-            Discount,
-            Inventory,
-            ProductCategory,
-            Cart,
-            OrderItem,
-        }) {
-            this.belongsTo(ProductCategory, {
-                foreignKey: "cat_id",
-            });
-            this.belongsTo(Inventory, {
-                foreignKey: "inventry_id",
-            });
+        static associate({ Discount, ProductCategory, Cart, OrderItem }) {
             this.belongsTo(Discount, {
                 foreignKey: "disc_id",
             });
+            this.belongsTo(ProductCategory, {
+                foreignKey: "cat_id",
+            });
+
             this.hasOne(Cart);
             this.hasOne(OrderItem);
         }
@@ -44,10 +36,17 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
+            brand: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
             price: {
                 type: DataTypes.FLOAT,
                 allowNull: false,
-                unique: true,
+            },
+            total_available: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
             },
         },
         {

@@ -6,7 +6,7 @@
 
 const bcrypt = require("bcrypt");
 const { accessToken, refrestoken } = require("./genToken");
-const { Users } = require("../../models");
+const { Users } = require("../../models/schema/Users");
 
 const SignUp = async (data) => {
     const { username, email, password, contact } = data;

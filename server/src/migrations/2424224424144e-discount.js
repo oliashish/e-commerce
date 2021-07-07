@@ -8,7 +8,6 @@ module.exports = {
                 primaryKey: true,
                 unique: true,
             },
-
             name: {
                 type: Sequelize.STRING,
                 allowNull: false,
@@ -24,7 +23,6 @@ module.exports = {
             active: {
                 type: Sequelize.BOOLEAN,
                 allowNull: false,
-                unique: true,
             },
             createdAt: {
                 allowNull: false,
