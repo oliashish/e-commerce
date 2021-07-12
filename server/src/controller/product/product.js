@@ -2,7 +2,7 @@
 const { Product } = require("../../models");
 
 const createProduct = async (body, image) => {
-    const { cat_id, desc_id, name, price, total_available, desc } = body;
+    const { cat_id, disc_id, name, price, brand, total_available, desc } = body;
     try {
         const product = await Product.create({
             cat_id,
@@ -10,6 +10,7 @@ const createProduct = async (body, image) => {
             name,
             image,
             desc,
+            brand,
             price,
             total_available,
         });
