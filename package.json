@@ -5,9 +5,7 @@
     "main": "server.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "dev2": "pm2 start server/src/server.js",
         "start": "npm install && pm2 start server/src/server.js --watch",
-        "dev": "concurrently \"cd client && npm start\" && \"cd server/src && nodemon server.js\"",
         "heroku-postbuild": "cd client && npm install && npm run build"
     },
     "repository": {
