@@ -15,6 +15,8 @@ module.exports = {
                 desc: faker.lorem.sentence(),
                 rating: Math.random() + 3,
                 reviews_num: faker.datatype.number(),
+                createdAt: new Date(),
+                updatedAt: new Date(),
             };
             sellerData.push(sellerObj);
         }

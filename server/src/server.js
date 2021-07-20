@@ -10,8 +10,6 @@ const db = require("./database/dbConnection");
 const auth = require("./routes/auth/authRoute");
 const payment = require("./routes/payment/stripe");
 const product = require("./routes/products/product");
-const category = require("./routes/products/category");
-const discount = require("./routes/products/discount");
 
 const PORT = process.env.PORT || 5000;
 
@@ -48,8 +46,6 @@ app.use(express.static(path.join(__dirname, "../../client/build")));
 app.use("/api/authenticate", auth);
 app.use("/api/payment", payment);
 app.use("/api/product", product);
-app.use("/api/category", category);
-app.use("/api/discount", discount);
 
 // rendering react frontend from client directory
 
