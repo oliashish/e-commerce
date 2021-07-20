@@ -1,6 +1,8 @@
+"use strict";
+
 module.exports = {
-    up: async (queryInterface, Sequelize) => {
-        await queryInterface.createTable("product", {
+    up: (queryInterface, Sequelize) => {
+        return queryInterface.createTable("product", {
             id: {
                 type: Sequelize.UUID,
                 defaultValue: Sequelize.UUIDV4,
@@ -8,14 +10,14 @@ module.exports = {
                 primaryKey: true,
                 unique: true,
             },
-            cat_id: {
+            seller_id: {
                 type: Sequelize.UUID,
                 allowNull: false,
+                reference: {
+                    model: "seller",
+                    key: "id",
+                },
             },
-            disc_id: {
-                type: Sequelize.UUID,
-            },
-
             name: {
                 type: Sequelize.STRING,
                 allowNull: false,
@@ -36,7 +38,7 @@ module.exports = {
                 type: Sequelize.FLOAT,
                 allowNull: false,
             },
-            total_available: {
+            sku: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
             },
@@ -50,7 +52,7 @@ module.exports = {
             },
         });
     },
-    down: async (queryInterface, Sequelize) => {
-        await queryInterface.dropTable("product");
+    down: (queryInterface) => {
+        return queryInterface.dropTable("product");
     },
 };

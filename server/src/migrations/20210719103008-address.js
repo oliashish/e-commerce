@@ -1,6 +1,8 @@
+"use strict";
+
 module.exports = {
-    up: async (queryInterface, Sequelize) => {
-        await queryInterface.createTable("user_address", {
+    up: (queryInterface, Sequelize) => {
+        return queryInterface.createTable("user_address", {
             id: {
                 type: Sequelize.UUID,
                 defaultValue: Sequelize.UUIDV4,
@@ -11,6 +13,10 @@ module.exports = {
             user_id: {
                 type: Sequelize.UUID,
                 allowNull: false,
+                references: {
+                    model: "user",
+                    key: "id",
+                },
             },
             address_line: {
                 type: Sequelize.STRING,
@@ -21,7 +27,7 @@ module.exports = {
                 allowNull: false,
             },
             pin_cod: {
-                type: Sequelize.STRING,
+                type: Sequelize.INTEGER,
                 allowNull: false,
             },
             country: {
@@ -37,7 +43,7 @@ module.exports = {
             },
         });
     },
-    down: async (queryInterface, Sequelize) => {
-        await queryInterface.dropTable("user_address");
+    down: (queryInterface) => {
+        return queryInterface.dropTable("user_address");
     },
 };

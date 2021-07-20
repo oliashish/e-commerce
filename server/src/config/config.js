@@ -6,7 +6,7 @@ module.exports = config = {
     development: {
         username: "root",
         password: "mysql001",
-        database: "sql6425008",
+        database: "aura_apex",
         host: "localhost",
         dialect: "mysql",
     },

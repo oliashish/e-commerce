@@ -13,6 +13,7 @@ const {
 route.post("/item", upload.single("image"), async (req, res) => {
     const body = req.body;
     const image = req.file;
+
     const product = await createProduct(body, image);
     res.send(product);
 });

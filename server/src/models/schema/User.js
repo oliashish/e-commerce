@@ -1,18 +1,20 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-    class Users extends Model {
-        static associate({ UserAddress, Cart, Payment, OrderDetails }) {
-            this.hasMany(UserAddress);
+    class User extends Model {
+        static associate({ UserAddress, Payment, OrderDetail }) {
             this.hasMany(Payment);
             this.hasMany(UserAddress);
-            this.hasOne(Cart);
+            this.hasMany(OrderDetail);
         }
         toJSON() {
-            return { ...this.get(), password: undefined };
+            return {
+                ...this.get(),
+                password: undefined,
+            };
         }
     }
-    Users.init(
+    User.init(
         {
             id: {
                 type: DataTypes.UUID,
@@ -42,9 +44,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         {
             sequelize,
-            tableName: "users",
-            modelName: "Users",
+            tableName: "user",
+            modelName: "User",
         }
     );
-    return Users;
+    return User;
 };

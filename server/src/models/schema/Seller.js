@@ -1,12 +1,14 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-    class Discount extends Model {
+    class Seller extends Model {
         static associate({ Product }) {
-            this.hasMany(Product);
+            this.hasMany(Product, {
+                foreignKey: "seller_id",
+            });
         }
     }
-    Discount.init(
+    Seller.init(
         {
             id: {
                 type: DataTypes.UUID,
@@ -15,8 +17,11 @@ module.exports = (sequelize, DataTypes) => {
                 primaryKey: true,
                 unique: true,
             },
-
             name: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            address: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
@@ -24,20 +29,21 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            percent: {
+            rating: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            active: {
-                type: DataTypes.BOOLEAN,
+            reviews_num: {
+                type: DataTypes.INTEGER,
                 allowNull: false,
+                defaultValue: 0,
             },
         },
         {
             sequelize,
-            tableName: "discount",
-            modelName: "Discount",
+            tableName: "seller",
+            modelName: "Seller",
         }
     );
-    return Discount;
+    return Seller;
 };

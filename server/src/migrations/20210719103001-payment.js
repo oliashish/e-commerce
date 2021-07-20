@@ -1,6 +1,8 @@
+"use strict";
+
 module.exports = {
-    up: async (queryInterface, Sequelize) => {
-        await queryInterface.createTable("product_category", {
+    up: (queryInterface, Sequelize) => {
+        return queryInterface.createTable("payment", {
             id: {
                 type: Sequelize.UUID,
                 defaultValue: Sequelize.UUIDV4,
@@ -8,15 +10,20 @@ module.exports = {
                 primaryKey: true,
                 unique: true,
             },
-            name: {
-                type: Sequelize.STRING,
+            user_id: {
+                type: Sequelize.UUID,
                 allowNull: false,
+                references: {
+                    model: "user",
+                    key: "id",
+                },
             },
-            type: {
-                type: Sequelize.STRING,
+            card_num: {
+                type: Sequelize.BIGINT,
                 allowNull: false,
+                unique: true,
             },
-            for: {
+            expiry: {
                 type: Sequelize.STRING,
                 allowNull: false,
             },
@@ -30,7 +37,7 @@ module.exports = {
             },
         });
     },
-    down: async (queryInterface, Sequelize) => {
-        await queryInterface.dropTable("product_category");
+    down: (queryInterface) => {
+        return queryInterface.dropTable("payment");
     },
 };

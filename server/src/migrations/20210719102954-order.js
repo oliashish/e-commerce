@@ -1,25 +1,38 @@
+"use strict";
+
 module.exports = {
-    up: async (queryInterface, Sequelize) => {
-        await queryInterface.createTable("order_details", {
+    up: (queryInterface, Sequelize) => {
+        return queryInterface.createTable("order_detail", {
             id: {
                 type: Sequelize.UUID,
                 defaultValue: Sequelize.UUIDV4,
                 allowNull: false,
                 primaryKey: true,
-            },
-            payment_id: {
-                type: Sequelize.UUID,
-
-                allowNull: false,
+                unique: true,
             },
             user_id: {
                 type: Sequelize.UUID,
-
                 allowNull: false,
+                references: {
+                    model: "user",
+                    key: "id",
+                },
             },
-
+            product_id: {
+                type: Sequelize.UUID,
+                allowNull: false,
+                references: {
+                    model: "product",
+                    key: "id",
+                },
+            },
             total: {
                 type: Sequelize.INTEGER,
+                allowNull: false,
+            },
+            isPaymentDone: {
+                type: Sequelize.BOOLEAN,
+                default: false,
                 allowNull: false,
             },
             createdAt: {
@@ -32,7 +45,7 @@ module.exports = {
             },
         });
     },
-    down: async (queryInterface, Sequelize) => {
-        await queryInterface.dropTable("order_details");
+    down: (queryInterface) => {
+        return queryInterface.dropTable("order_detail");
     },
 };

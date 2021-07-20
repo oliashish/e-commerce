@@ -1,6 +1,8 @@
+"use strict";
+
 module.exports = {
-    up: async (queryInterface, Sequelize) => {
-        await queryInterface.createTable("cart", {
+    up: (queryInterface, Sequelize) => {
+        return queryInterface.createTable("review", {
             id: {
                 type: Sequelize.UUID,
                 defaultValue: Sequelize.UUIDV4,
@@ -8,18 +10,30 @@ module.exports = {
                 primaryKey: true,
                 unique: true,
             },
-            user_id: {
+            product_id: {
                 type: Sequelize.UUID,
                 allowNull: false,
+                references: {
+                    model: "product",
+                    key: "id",
+                },
             },
-            prod_id: {
-                type: Sequelize.UUID,
+            name: {
+                type: Sequelize.STRING,
                 allowNull: false,
             },
-
-            quant: {
+            comment: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
+            rating: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
+            reviews_num: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
+                defaultValue: 0,
             },
             createdAt: {
                 allowNull: false,
@@ -31,7 +45,7 @@ module.exports = {
             },
         });
     },
-    down: async (queryInterface, Sequelize) => {
-        await queryInterface.dropTable("cart");
+    down: (queryInterface) => {
+        return queryInterface.dropTable("review");
     },
 };
