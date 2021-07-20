@@ -6,7 +6,7 @@
 
 const bcrypt = require("bcrypt");
 const { accessToken, refrestoken } = require("./genToken");
-const { Users } = require("../../models/schema/Users");
+const { User } = require("../../models/schema/User");
 
 const SignUp = async (data) => {
     const { username, email, password, contact } = data;
@@ -16,7 +16,7 @@ const SignUp = async (data) => {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     try {
-        const newUser = await Users.create({
+        const newUser = await User.create({
             username,
             email,
             password: hashedPassword,
@@ -35,7 +35,7 @@ const SignIn = async (data) => {
 
     // checking for user existence through email
     try {
-        let user = await Users.findOne({
+        let user = await User.findOne({
             where: {
                 email,
             },

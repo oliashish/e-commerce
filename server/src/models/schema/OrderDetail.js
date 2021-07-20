@@ -1,18 +1,17 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-    class OrderDetails extends Model {
-        static associate({ Users, PaymentDetails, OrderItem }) {
-            this.belongsTo(Users, {
+    class OrderDetail extends Model {
+        static associate({ User, Product }) {
+            this.belongsTo(User, {
                 foreignKey: "user_id",
             });
-            this.belongsTo(PaymentDetails, {
-                foreignKey: "payment_id",
+            this.belongsTo(Product, {
+                foreignKey: "product_id",
             });
-            this.hasMany(OrderItem);
         }
     }
-    OrderDetails.init(
+    OrderDetail.init(
         {
             id: {
                 type: DataTypes.UUID,
@@ -21,17 +20,21 @@ module.exports = (sequelize, DataTypes) => {
                 primaryKey: true,
                 unique: true,
             },
-
             total: {
                 type: DataTypes.INTEGER,
+                allowNull: false,
+            },
+            isPaymentDone: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: false,
                 allowNull: false,
             },
         },
         {
             sequelize,
-            tableName: "order_details",
-            modelName: "OrderDetails",
+            tableName: "order_detail",
+            modelName: "OrderDetail",
         }
     );
-    return OrderDetails;
+    return OrderDetail;
 };

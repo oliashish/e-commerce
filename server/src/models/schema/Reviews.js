@@ -1,12 +1,14 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-    class ProductCategory extends Model {
+    class Review extends Model {
         static associate({ Product }) {
-            this.hasMany(Product);
+            this.belongsTo(Product, {
+                foreignKey: "product_id",
+            });
         }
     }
-    ProductCategory.init(
+    Review.init(
         {
             id: {
                 type: DataTypes.UUID,
@@ -19,20 +21,26 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            type: {
+            comment: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            for: {
+            rating: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
+            reviews_num: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                defaultValue: 0,
+            },
+          
         },
         {
             sequelize,
-            tableName: "product_category",
-            modelName: "ProductCategory",
+            tableName: "review",
+            modelName: "Review",
         }
     );
-    return ProductCategory;
+    return Review;
 };

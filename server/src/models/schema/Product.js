@@ -2,16 +2,12 @@ const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
     class Product extends Model {
-        static associate({ Discount, ProductCategory, Cart, OrderItem }) {
-            this.belongsTo(Discount, {
-                foreignKey: "disc_id",
+        static associate({ Seller, Review, OrderDetail }) {
+            this.belongsTo(Seller, {
+                foreignKey: "seller_id",
             });
-            this.belongsTo(ProductCategory, {
-                foreignKey: "cat_id",
-            });
-
-            this.hasOne(Cart);
-            this.hasOne(OrderItem);
+            this.hasMany(Review);
+            this.hasMany(OrderDetail);
         }
     }
     Product.init(
@@ -23,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
                 primaryKey: true,
                 unique: true,
             },
-
             name: {
                 type: DataTypes.STRING,
                 allowNull: false,
@@ -44,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.FLOAT,
                 allowNull: false,
             },
-            total_available: {
+            sku: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
