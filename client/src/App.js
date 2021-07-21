@@ -1,17 +1,14 @@
 import React from "react";
 import axios from "axios";
-
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import "../src/styles/main.css";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 
-import Payment from "./payment/Payment";
-
 import IndividualProductDetails from "./components/ProductDetails/IndividualProductDetails";
-import { Cart } from "./components/Cart/Cart";
-import Protected from "./helper/routes/Protected";
+import { Cart } from "./pages/Cart/Cart";
+import Header from "./components/MainHeader/Header";
 
 axios.defaults.baseURL = "http://localhost:5000";
 axios.defaults.withCredentials = true;
@@ -19,18 +16,18 @@ axios.defaults.withCredentials = true;
 const App = (props) => {
     return (
         <div className="App">
+            <Header />
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/authenticate" component={Auth} />
                 <Route
                     exact
-                    path="/product/:productname"
+                    path="/product/:productId"
                     component={IndividualProductDetails}
                 />
-                <Protected path="/cartitems" component={Cart} />
-                <Protected path="/payment" component={Payment} />
+                <Route exact path="/cart" component={Cart} />
+                <Route exact path="/cart/:productId?" component={Cart} />
             </Switch>
-            <Redirect to="/" />
         </div>
     );
 };

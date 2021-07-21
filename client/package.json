@@ -1,5 +1,6 @@
 {
     "name": "client",
+    "type": "module",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
@@ -12,6 +13,7 @@
         "axios": "^0.21.1",
         "dotenv": "^8.2.0",
         "postcss-cli": "^8.3.1",
+        "rating-star": "^1.1.0",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-redux": "^7.2.4",
@@ -47,5 +49,8 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "faker": "^5.5.3"
     }
 }
