@@ -2,15 +2,17 @@
 const { Product } = require("../../models");
 
 const createProduct = async (body, image) => {
-    const { name, price, brand, sku, desc } = body;
+    const { name, seller_id, price, brand, sku, desc, category } = body;
     try {
         const product = await Product.create({
+            seller_id,
             name,
             image,
             desc,
             brand,
             price,
             sku,
+            category
         });
         return product;
     } catch (err) {
@@ -19,15 +21,22 @@ const createProduct = async (body, image) => {
 };
 const getAll = async () => {
     try {
-        const products = await Product.findAll({
-            exclude: "DiscountId",
-        });
+        const products = await Product.findAll();
         return products;
     } catch (err) {
         throw err;
     }
 };
-const GetProductById = () => {};
+const GetProductById = async (id) => {
+    try {
+        const product = await Product.findByPk(id);
+        return product;
+    }catch(err) {
+        throw err
+    }
+};
+
+// only admin access
 const updateProduct = () => {};
 const deleteProduct = () => {};
 
