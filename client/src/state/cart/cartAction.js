@@ -1,10 +1,12 @@
-import data from "../../data/data";
+import { getProductById } from "../../helper/api/product";
+
 import { ADD_TO_CART, REMOVE_FROM_CART } from "../actionConstants";
 
 export const addToCart = (productId, qty) => {
     return async (dispatch) => {
-        const product = data.find((prod) => prod.id === productId);
-        const { id, name, price, image, sku, brand } = product;
+        const { id, name, price, image, sku, brand, category } =
+            await getProductById(productId);
+
         dispatch({
             type: ADD_TO_CART,
             payload: {
@@ -14,6 +16,7 @@ export const addToCart = (productId, qty) => {
                 price,
                 image,
                 sku,
+                category,
                 qty,
             },
         });
