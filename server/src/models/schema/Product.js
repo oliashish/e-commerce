@@ -39,6 +39,10 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.FLOAT,
                 allowNull: false,
             },
+            category: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },  
             sku: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
