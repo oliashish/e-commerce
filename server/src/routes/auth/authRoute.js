@@ -1,30 +1,39 @@
 const route = require("express").Router();
 const verify = require("../../middleware/verify.jwt");
-const { emailExists } = require("../../controller/auth/validation");
+const { emailExists } = require("../../middleware/validation");
 const { SignUp, SignIn } = require("../../controller/auth/auth");
 
-route.post("/signup", async (req, res) => {
-    const [newUser, accessToken] = await SignUp(req.body);
+route.post("/signup", emailExists, async (req, res) => {
+    const response = await SignUp(req.body);
 
-    res.cookie("_access_token", accessToken, {
-        httpOnly: true,
-        maxAge: 60 * 60 * 24 * 1000,
-    });
-    res.json(newUser);
+    if (response.error) {
+        res.status(406).json({ message: "something went wrong try again.." });
+    } else {
+        res.cookie("_access_token", response.access_token, {
+            httpOnly: true,
+        });
+        res.send(response.newUser);
+    }
 });
 
 route.post("/login", verify, async (req, res) => {
-    const [user, refreshToken] = await SignIn(req.body.data);
+    const response = await SignIn(req.body);
 
-    res.cookie("_refresh_token", refreshToken, {
+    if (response.error) {
+        res.status(401).send(response.error);
+    }
+
+    res.cookie("_access_token", response.access_token, {
         httpOnly: true,
-        maxAge: 60 * 60 * 24 * 1000,
+        // secure: true,
     });
-    res.json(user);
+    res.json(response.user);
 });
 
 route.get("/logout", (req, res) => {
-    res.clearCookie("_access_token").status(200).send("cookie cleared");
+    res.clearCookie("_access_token")
+        .status(200)
+        .json({ message: "logout successfully" });
 });
 
 module.exports = route;

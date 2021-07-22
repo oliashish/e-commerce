@@ -4,17 +4,12 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config((path = "/"));
 
 module.exports = function (req, res, next) {
-    const _access_token = req.headers.cookie;
-    const token = _access_token.split("=")[1];
+    let token = req.cookies._access_token;
 
     if (!token) res.send("Access Denied").status(401);
 
     try {
-        const verified = jwt.verify(
-            token,
-            process.env.JWT_ACCESS_TOKEN_KEY ||
-                "hshkbfauebkwuegb8293t92832bfweufwefbwjfweiouf"
-        );
+        const verified = jwt.verify(token, process.env.JWT_ACCESS_TOKEN_KEY);
         req.user = verified;
         next();
     } catch (error) {

@@ -1,9 +1,9 @@
-const { Users } = require("../../models");
+const { User } = require("../models");
 
 // SignUp Validation
 const emailExists = async (req, res, next) => {
     const { email } = req.body;
-    const user = await Users.findOne({
+    const user = await User.findOne({
         where: {
             email,
         },
@@ -12,7 +12,7 @@ const emailExists = async (req, res, next) => {
     if (!user) {
         next();
     } else {
-        res.json({ msg: "email already exists.." });
+        res.json({ message: "email already exists.." });
     }
 };
 
