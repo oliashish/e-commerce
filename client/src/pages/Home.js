@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Footer from "../components/Footer";
 import ProductItems from "../components/ProductListingCards/ProductItems";
-import Header from "../components/MainHeader/Header";
 import Loading from "../components/load/Loading";
 import Message from "../components/load/Message";
 

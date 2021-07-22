@@ -1,3 +1,4 @@
+
 import {
     INDIVIDUAL_PRODUCT_ERROR,
     INDIVIDUAL_PRODUCT_REQUEST,
@@ -8,6 +9,7 @@ import {
 } from "../actionConstants";
 
 import data from "../../data/data";
+import { getAllProduct, getProductById } from "../../helper/api/product";
 
 export const productAction = () => {
     return async (dispatch) => {
@@ -16,7 +18,7 @@ export const productAction = () => {
         // todo - get call here for product from backend and before that dispatch product_request
 
         try {
-            const products = data; // axios call here
+            const products = await getAllProduct(); // axios call here
             dispatch({
                 type: PRODUCT_SUCCESS,
                 payload: products,
@@ -34,7 +36,7 @@ export const detailsProductAction = (productId) => {
             payload: productId,
         });
         try {
-            const product = data.find((d) => d.id === productId); // axios call here for product by id
+            const product = await getProductById(productId); // axios call here for product by id
             dispatch({
                 type: INDIVIDUAL_PRODUCT_SUCCESS,
                 payload: product,

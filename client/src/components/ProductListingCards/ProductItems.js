@@ -11,7 +11,7 @@ const ProductItems = ({ products }) => {
                         className="sm:w-full md:w-1/3 lg:w-1/5 m-5"
                         key={product.id}
                     >
-                        <div className="flex flex-wrap -m-4">
+                    <div className="flex flex-wrap -m-4">
                             <div className="lg:w-full md:w-full p-4 w-full">
                                 <Link
                                     to={`/product/${product.id}`}
