@@ -39,7 +39,6 @@ module.exports = (sequelize, DataTypes) => {
             contact_number: {
                 type: DataTypes.STRING,
                 allowNull: false,
-                unique: true,
             },
         },
         {

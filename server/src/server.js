@@ -44,8 +44,8 @@ app.use(express.static(path.join(__dirname, "../../client/build")));
 // routing
 
 app.use("/api/authenticate", auth);
-app.use("/api/payment", payment);
-app.use("/api/product", product);
+app.use("/api/payments", payment);
+app.use("/api/products", product);
 
 // rendering react frontend from client directory
 
