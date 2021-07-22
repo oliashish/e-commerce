@@ -15,7 +15,7 @@ const Payment = () => {
             product,
         };
         const result = await axios.post("/api/payment/pay", body);
-        console.log(result);
+      
     };
 
     return (

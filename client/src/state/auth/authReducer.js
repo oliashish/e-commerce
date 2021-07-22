@@ -1,26 +1,30 @@
-import { SIGNUP_SUCCESS } from "../actionConstants";
+import {
+    LOGIN_ERROR,
+    LOGIN_REQUEST,
+    LOGIN_SUCCESS,
+    LOGOUT_ERROR,
+    LOGOUT_SUCCESS,
+} from "../actionConstants";
 
-let initial_auth_state = {
-    isLoggedIn: false,
-    username: "",
-    email: "",
-    id: "",
-};
-
-const authReducer = (state = initial_auth_state, action) => {
+const authReducer = (state = {}, action) => {
     switch (action.type) {
-        case SIGNUP_SUCCESS:
-            const newAuthState = {
-                isLoggedIn: true,
-                username: action.payload.username,
-                id: action.payload.id,
-                email: action.payload.email,
-            };
+        case LOGIN_REQUEST:
+            return { loading: true };
 
+        case LOGIN_SUCCESS:
             return {
-                newAuthState,
+                loading: false,
+                userInfo: action.payload,
             };
-
+        case LOGIN_ERROR:
+            return {
+                loading: false,
+                error: action.payload,
+            };
+        case LOGOUT_SUCCESS:
+            return {};
+        case LOGOUT_ERROR:
+            return { error: action.payload };
         default:
             return state;
     }

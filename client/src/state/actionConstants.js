@@ -1,14 +1,18 @@
-// authentication and errors
-export const SIGNUP_LOADING = "SIGNUP_LOADING";
-export const SIGNUP_SUCCESS = "SIGNUP_LOADING";
-export const SIGNUP_FAIL = "SIGNUP_LOADING";
-export const LOGIN_LOADING = "SIGNUP_LOADING";
-export const LOGIN_SUCCESS = "SIGNUP_LOADING";
-export const LOGIN_FAIL = "LOGIN_FAIL";
-export const LOGOUT_SUCCESS = "SIGNUP_LOADING";
-export const LOGOUT_FAIL = "SIGNUP_LOADING";
-export const CLEAR_ERRORS = "CLEAR_ERRORS";
-export const GET_ERROR = "GET_ERROR";
+//  User login
+export const LOGIN_REQUEST = "LOGIN_REQUEST";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_ERROR = "LOGIN_ERROR";
+
+// user logout
+
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const LOGOUT_ERROR = "LOGOUT_ERROR";
+
+// signup
+
+export const SIGNUP_REQUEST = "SIGNUP_REQUEST";
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+export const SIGNUP_ERROR = "SIGNUP_ERROR";
 
 // products
 
