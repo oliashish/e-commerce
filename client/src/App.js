@@ -10,6 +10,7 @@ import { Cart } from "./pages/Cart/Cart";
 import Header from "./components/MainHeader/Header";
 import Login from "./components/form/Login";
 import Signup from "./components/form/Signup";
+import Shipping from "./pages/Shipping";
 
 axios.defaults.baseURL = "http://localhost:5000";
 axios.defaults.withCredentials = true;
@@ -20,8 +21,8 @@ const App = (props) => {
             <Header />
             <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/auth/login" component={Login} />
-                <Route exact path="/register/signup" component={Signup} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/signup" component={Signup} />
 
                 <Route
                     exact
@@ -30,6 +31,7 @@ const App = (props) => {
                 />
                 <Route exact path="/cart" component={Cart} />
                 <Route exact path="/cart/:productId?" component={Cart} />
+                <Route exact path="/shipping" component={Shipping} />
             </Switch>
         </div>
     );

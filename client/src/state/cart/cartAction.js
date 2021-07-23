@@ -1,6 +1,11 @@
 import { getProductById } from "../../helper/api/product";
+import { SaveuserAddress } from "../../helper/api/userAddress";
 
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../actionConstants";
+import {
+    ADD_TO_CART,
+    REMOVE_FROM_CART,
+    SAVE_ADDRESS,
+} from "../actionConstants";
 
 export const addToCart = (productId, qty) => {
     return async (dispatch) => {
@@ -29,5 +34,17 @@ export const removeFromCart = (productId) => {
             type: REMOVE_FROM_CART,
             payload: productId,
         });
+    };
+};
+
+export const saveAddress = (data) => {
+    return async (dispatch) => {
+        const userAddress = await SaveuserAddress(data);
+        if (userAddress.status === 200) {
+            dispatch({
+                type: SAVE_ADDRESS,
+                payload: userAddress.data,
+            });
+        }
     };
 };

@@ -1,18 +1,39 @@
-import { LogIn, LogOut } from "../../helper/api/auth";
+import { LogIn, LogOut, SignUp } from "../../helper/api/auth";
 import {
     LOGIN_ERROR,
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
     LOGOUT_ERROR,
+    SIGNUP_ERROR,
+    SIGNUP_REQUEST,
+    SIGNUP_SUCCESS,
 } from "../actionConstants";
+
+const signup = (data) => {
+    return async (dispatch) => {
+        dispatch({ type: SIGNUP_REQUEST });
+        const newUser = await SignUp(data);
+        console.log(newUser.data.id);
+        if (newUser.status === 200) {
+            dispatch({
+                type: SIGNUP_SUCCESS,
+                payload: newUser.data,
+            });
+        } else if (newUser.data.message) {
+            dispatch({
+                type: SIGNUP_ERROR,
+                payload: newUser.data.message,
+            });
+        }
+    };
+};
 
 const login = (email, password) => {
     return async (dispatch) => {
-        dispatch({ type: LOGIN_REQUEST, payload: email, password });
+        dispatch({ type: LOGIN_REQUEST });
 
-     
         const response = await LogIn(email, password);
-      
+
         if (response.status === 200) {
             dispatch({ type: LOGIN_SUCCESS, payload: response.data });
         } else if (response.status === 401) {
@@ -41,4 +62,4 @@ const logout = () => {
     };
 };
 
-export { login, logout };
+export { login, logout, signup };

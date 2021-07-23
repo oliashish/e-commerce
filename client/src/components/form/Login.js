@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../state/auth/authAction";
 
-const Login = () => {
+const Login = (props) => {
+    const { userInfo } = useSelector((state) => state.auth);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -13,6 +14,15 @@ const Login = () => {
         e.preventDefault();
         dispatch(login(email, password));
     };
+
+    const redirect = props.location.search
+        ? props.location.search.split("=")[1]
+        : "/";
+    useEffect(() => {
+        if (userInfo) {
+            props.history.push(redirect);
+        }
+    }, [props, redirect, userInfo]);
 
     return (
         <div className="w-3/4 mx-auto mt-16 flex flex-col justify-center items-center">
@@ -51,7 +61,7 @@ const Login = () => {
                     </button>
                 </form>
             </div>
-            <Link to="/register/signup" className="hover:underline">
+            <Link to="/signup?redirect=shipping" className="hover:underline">
                 Don't have an account? Register
             </Link>
         </div>

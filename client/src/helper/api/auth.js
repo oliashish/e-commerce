@@ -1,18 +1,22 @@
-import axios from "axios";
+import Axios from "axios";
 
 export const SignUp = async (data) => {
-    const response = await axios.post("/api/authenticate/signup", data);
-    return response;
+    try {
+        const response = await Axios.post("/api/authenticate/signup", data);
+        return response;
+    } catch (error) {
+        throw error;
+    }
 };
 
 export const LogOut = async () => {
-    const response = await axios.get("/api/authenticate/logout");
+    const response = await Axios.get("/api/authenticate/logout");
     return response;
 };
 
 export const LogIn = async (email, password) => {
     try {
-        const response = await axios.post("/api/authenticate/login", {
+        const response = await Axios.post("/api/authenticate/login", {
             email,
             password,
             Credential: "include",

@@ -1,4 +1,3 @@
-
 import {
     INDIVIDUAL_PRODUCT_ERROR,
     INDIVIDUAL_PRODUCT_REQUEST,
@@ -8,7 +7,6 @@ import {
     PRODUCT_SUCCESS,
 } from "../actionConstants";
 
-import data from "../../data/data";
 import { getAllProduct, getProductById } from "../../helper/api/product";
 
 export const productAction = () => {
