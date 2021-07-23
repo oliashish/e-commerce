@@ -23,7 +23,7 @@ export const Cart = (props) => {
         dispatch(removeFromCart(id));
     };
     const checkoutHandler = () => {
-        props.history.push(`/auth/login?redirect=shipping`);
+        props.history.push(`/login?redirect=shipping`);
     };
 
     return (

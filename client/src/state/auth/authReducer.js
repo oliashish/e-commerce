@@ -4,10 +4,28 @@ import {
     LOGIN_SUCCESS,
     LOGOUT_ERROR,
     LOGOUT_SUCCESS,
+    SIGNUP_ERROR,
+    SIGNUP_REQUEST,
+    SIGNUP_SUCCESS,
 } from "../actionConstants";
 
 const authReducer = (state = {}, action) => {
     switch (action.type) {
+        case SIGNUP_REQUEST:
+            return { loading: true };
+
+        case SIGNUP_SUCCESS:
+            return {
+                loading: false,
+                userInfo: action.payload,
+            };
+
+        case SIGNUP_ERROR:
+            return {
+                loading: false,
+                error: action.payload,
+            };
+
         case LOGIN_REQUEST:
             return { loading: true };
 

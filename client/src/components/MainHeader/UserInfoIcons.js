@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -11,16 +11,6 @@ const UserInfoIcons = (props) => {
     const [dropdown, setDropdown] = useState(false);
 
     const dispatch = useDispatch();
-
-    // const redirect = props.location.search
-    //     ? props.location.search.split("=")[1]
-    //     : "/";
-
-    // useEffect(() => {
-    //     if (userInfo) {
-    //         props.history.push(redirect);
-    //     }
-    // }, [props.history, redirect, userInfo]);
 
     const logoutHandler = () => {
         setDropdown(false);
@@ -46,7 +36,7 @@ const UserInfoIcons = (props) => {
                 </div>
             ) : (
                 <Link
-                    to="/auth/login"
+                    to="/login"
                     className="border-2 font-semibold bg-yellow-400 text-gray-600"
                 >
                     login
