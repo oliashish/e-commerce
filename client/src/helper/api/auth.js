@@ -7,13 +7,19 @@ export const SignUp = async (data) => {
 
 export const LogOut = async () => {
     const response = await axios.get("/api/authenticate/logout");
-    console.log(response);
+    return response;
 };
 
-export const LogIn = async (data) => {
-    const response = await axios.post("/api/authenticate/login", {
-        data,
-        Credential: "include",
-    });
-    return response;
+export const LogIn = async (email, password) => {
+    try {
+        const response = await axios.post("/api/authenticate/login", {
+            email,
+            password,
+            Credential: "include",
+        });
+
+        return response;
+    } catch (error) {
+        throw error;
+    }
 };

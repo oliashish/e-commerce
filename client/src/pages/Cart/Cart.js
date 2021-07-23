@@ -23,7 +23,7 @@ export const Cart = (props) => {
         dispatch(removeFromCart(id));
     };
     const checkoutHandler = () => {
-        props.history.push("/signin?redirect=shipping");
+        props.history.push(`/auth/login?redirect=shipping`);
     };
 
     return (
@@ -113,6 +113,7 @@ export const Cart = (props) => {
                     <button
                         className="w-full mt-8 mx-auto rounded-full bg-yellow-300 py-2 text-gray-700 text-xl hover:bg-yellow-400"
                         onClick={checkoutHandler}
+                        disabled={cartItems.length === 0}
                     >
                         Proceed To Buy
                     </button>

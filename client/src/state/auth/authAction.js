@@ -1,18 +1,44 @@
-import { SIGNUP_SUCCESS, GET_ERROR } from "../actionConstants";
-import { SignUp } from "../../helper/api/auth";
+import { LogIn, LogOut } from "../../helper/api/auth";
+import {
+    LOGIN_ERROR,
+    LOGIN_REQUEST,
+    LOGIN_SUCCESS,
+    LOGOUT_ERROR,
+} from "../actionConstants";
 
-const authAction = (userState, history) => {
+const login = (email, password) => {
     return async (dispatch) => {
-        const response = await SignUp(userState);
-        const data = response.data;
+        dispatch({ type: LOGIN_REQUEST, payload: email, password });
 
-        if (data) {
-            dispatch({ type: SIGNUP_SUCCESS, payload: data });
-            // history.push("/");
+     
+        const response = await LogIn(email, password);
+      
+        if (response.status === 200) {
+            dispatch({ type: LOGIN_SUCCESS, payload: response.data });
+        } else if (response.status === 401) {
+            dispatch({ type: LOGIN_ERROR, payload: response.data.message });
         } else {
-            dispatch({ type: GET_ERROR, payload: data });
+            dispatch({
+                type: LOGIN_ERROR,
+                payload: "something went wronge try again...",
+            });
         }
     };
 };
 
-export default authAction;
+const logout = () => {
+    return async (dispatch) => {
+        try {
+            const response = await LogOut(); // this request is to clear the cookie
+
+            if (response.status === 200) dispatch({ type: LOGIN_SUCCESS });
+        } catch (err) {
+            dispatch({
+                type: LOGOUT_ERROR,
+                payload: err.message,
+            });
+        }
+    };
+};
+
+export { login, logout };

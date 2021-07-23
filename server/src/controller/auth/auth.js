@@ -26,7 +26,7 @@ const SignUp = async (data) => {
 
         return { newUser, access_token };
     } catch (error) {
-        console.log(error);
+       
         return { error: error.message };
     }
 };
@@ -54,7 +54,6 @@ const SignIn = async (data) => {
 
         return { user, access_token };
     } catch (error) {
-        console.log(error.message);
         return error;
     }
 };

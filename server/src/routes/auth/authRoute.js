@@ -16,7 +16,7 @@ route.post("/signup", emailExists, async (req, res) => {
     }
 });
 
-route.post("/login", verify, async (req, res) => {
+route.post("/login", async (req, res) => {
     const response = await SignIn(req.body);
 
     if (response.error) {
