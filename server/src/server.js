@@ -10,6 +10,7 @@ const db = require("./database/dbConnection");
 const auth = require("./routes/auth/authRoute");
 const payment = require("./routes/payment/stripe");
 const product = require("./routes/products/product");
+const user = require("./routes/users/user");
 
 const PORT = process.env.PORT || 5000;
 
@@ -46,15 +47,16 @@ app.use(express.static(path.join(__dirname, "../../client/build")));
 app.use("/api/authenticate", auth);
 app.use("/api/payments", payment);
 app.use("/api/products", product);
-
+app.use("/api/user/", user);
+    
 // rendering react frontend from client directory
 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("../../client/build"));
-}
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../../client/build/index.html"));
-});
+// if (process.env.NODE_ENV === "production") {
+//     app.use(express.static("../../client/build"));
+// }
+// app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "../../client/build/index.html"));
+// });
 
 app.listen(PORT, () => {
     console.log(`running on port ${PORT}`);

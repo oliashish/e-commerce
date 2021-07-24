@@ -23,7 +23,7 @@ export const Cart = (props) => {
         dispatch(removeFromCart(id));
     };
     const checkoutHandler = () => {
-        props.history.push(`/login?redirect=shipping`);
+        props.history.push(`/login?redirect=shipping/address`);
     };
 
     return (
@@ -31,15 +31,15 @@ export const Cart = (props) => {
             <h1 className="text-3xl my-8 ml-8 text-red-800">
                 Your Shopping Cart
             </h1>
+            {cartItems.length === 0 && (
+                <Message>
+                    You Cart Is Empty
+                    <Link to="/" className="bg-blue-300">
+                        go back to home page
+                    </Link>
+                </Message>
+            )}
             <div className="flex flex-row justify-between">
-                {cartItems.length === 0 && (
-                    <Message>
-                        You Cart Is Empty
-                        <Link to="/" className="bg-blue-300">
-                            go back to home page
-                        </Link>
-                    </Message>
-                )}
                 <ul className="w-8/12">
                     {cartItems.map((item) => {
                         return (

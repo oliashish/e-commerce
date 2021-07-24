@@ -1,14 +1,21 @@
-const userRoute = require("express").Router();
-const {getUserById} = require("../../controller/user/user.js")
+const { CreateUserAddress } = require("../../controller/user/user");
 
-userRoute.get("/user/:id", async (req, res) => {
-    const id = req.params.id;
-    const user = await getUserById(id);
-    if (user) {
-        res.status(200).send(user);
-    } else {
-        throw new Error("something went wrong");
+const route = require("express").Router();
+
+// user address routes
+
+route.post("/address", async (req, res) => {
+    try {
+        const userAddress = await CreateUserAddress(req.body);
+        res.send(userAddress);
+    } catch (err) {
+        throw err;
     }
 });
+route.get("/address", async (req, res) => {
+    res.send("in address route");
+});
 
-module.exports = userRoute;
+// user cart routes
+
+module.exports = route;

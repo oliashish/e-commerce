@@ -1,18 +1,40 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { saveAddress } from "../../state/cart/cartAction";
 const UserAddress = (props) => {
-    const [name, setName] = useState();
-    const [address, setAddress] = useState();
-    const [city, setCity] = useState();
-    const [pincode, setPincode] = useState();
-    const [country, setCountry] = useState();
-
     const dispatch = useDispatch();
 
-    const submitHander = (e) => {
+    const { userInfo } = useSelector((state) => state.auth);
+    const { shippingAddress } = useSelector((state) => state.cart);
+    const addressLength = shippingAddress.length - 1;
+
+    const history = useHistory();
+    if (!userInfo) {
+        history.push("/login");
+    }
+
+    const [username, setName] = useState(
+        shippingAddress[addressLength].username || ""
+    );
+    const [address_line, setAddress] = useState(
+        shippingAddress[addressLength].address_line || ""
+    );
+    const [city, setCity] = useState(shippingAddress[addressLength].city);
+    const [pin_cod, setPincode] = useState(
+        shippingAddress[addressLength].pin_cod || ""
+    );
+    const [country, setCountry] = useState(
+        shippingAddress[addressLength].country || ""
+    );
+
+    const submitHandler = (e) => {
         e.preventDefault();
-        dispatch(saveAddress({ name, address, city, pincode, country }));
+        const { id } = userInfo;
+        dispatch(
+            saveAddress({ username, address_line, city, pin_cod, country, id })
+        );
+        props.history.push("/shipping/payment"); 
     };
     return (
         <div className="w-3/4 mx-auto mt-16 flex flex-col justify-center items-center">
@@ -23,12 +45,13 @@ const UserAddress = (props) => {
 
                 <form
                     className="w-9/12 flex flex-col justify-between"
-                    onSubmit={submitHander}
+                    onSubmit={submitHandler}
                 >
                     <div>
                         <input
                             className="focus:outline-none w-full border-b-2 text-lg mt-4"
                             type="text"
+                            value={username}
                             placeholder="enter your name"
                             required
                             onChange={(e) => setName(e.target.value)}
@@ -38,6 +61,7 @@ const UserAddress = (props) => {
                         <input
                             className="focus:outline-none w-full border-b-2 text-lg mt-4"
                             type="text"
+                            value={address_line}
                             placeholder="enter your address"
                             required
                             onChange={(e) => setAddress(e.target.value)}
@@ -46,6 +70,7 @@ const UserAddress = (props) => {
                     <div>
                         <input
                             className="focus:outline-none w-full border-b-2 text-lg mt-4"
+                            value={city}
                             type="text"
                             required
                             placeholder="enter your city name"
@@ -55,15 +80,17 @@ const UserAddress = (props) => {
                     <div>
                         <input
                             className="focus:outline-none w-full border-b-2 text-lg mt-4"
+                            value={pin_cod}
                             type="number"
                             required
                             placeholder="enter your postal code"
-                            onChange={(e) => setPincode(e.target.value)}
+                            onChange={(e) => setPincode(Number(e.target.value))}
                         />
                     </div>
                     <div>
                         <input
                             className="focus:outline-none w-full border-b-2 text-lg mt-4"
+                            value={country}
                             type="text"
                             required
                             placeholder="enter your country"
@@ -75,7 +102,7 @@ const UserAddress = (props) => {
                         type="submit"
                         className="w-full py-3 mx-auto text-xl bg-yellow-400 rounded-full border-0 focus:outline-none hover:bg-yellow-500 mt-8"
                     >
-                        Sign Up
+                        Save Address
                     </button>
                 </form>
             </div>

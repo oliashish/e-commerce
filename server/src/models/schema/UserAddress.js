@@ -32,6 +32,10 @@ module.exports = (sequelize, DataTypes) => {
             country: {
                 type: DataTypes.STRING,
             },
+            username: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
         },
         {
             sequelize,

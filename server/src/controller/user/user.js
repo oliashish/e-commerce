@@ -1,5 +1,28 @@
-// user model require
+const { UserAddress } = require("../../models");
 
-const getUserById = () => {};
+const CreateUserAddress = async (data) => {
+    const {
+        id: user_id,
+        address_line,
+        city,
+        pin_cod,
+        country,
+        username,
+    } = data;
 
-module.exports = { getUserById };
+    try {
+        const userAddress = await UserAddress.create({
+            user_id,
+            address_line,
+            city,
+            pin_cod,
+            country,
+            username,
+        });
+        return userAddress;
+    } catch (err) {
+        throw err;
+    }
+};
+
+module.exports = { CreateUserAddress };

@@ -10,7 +10,9 @@ import { Cart } from "./pages/Cart/Cart";
 import Header from "./components/MainHeader/Header";
 import Login from "./components/form/Login";
 import Signup from "./components/form/Signup";
-import Shipping from "./pages/Shipping";
+import UserAddress from "./components/shipping/UserAddress";
+import Payment from "./components/shipping/Payment";
+import PlaceOrder from "./components/shipping/PlaceOrder";
 
 axios.defaults.baseURL = "http://localhost:5000";
 axios.defaults.withCredentials = true;
@@ -31,7 +33,16 @@ const App = (props) => {
                 />
                 <Route exact path="/cart" component={Cart} />
                 <Route exact path="/cart/:productId?" component={Cart} />
-                <Route exact path="/shipping" component={Shipping} />
+                <Route exact path="/shipping/address" component={UserAddress} />
+                <Route exact path="/shipping/Payment" component={Payment} />
+
+                <Route
+                    exact
+                    path="/shipping/placeorder"
+                    component={PlaceOrder}
+                />
+
+                {/* <Route exact path="/shipping/payment" component={Payment} /> */}
             </Switch>
         </div>
     );
