@@ -11,7 +11,7 @@ import Header from "./components/MainHeader/Header";
 import Login from "./components/form/Login";
 import Signup from "./components/form/Signup";
 import UserAddress from "./components/shipping/UserAddress";
-import Payment from "./components/shipping/Payment";
+import Payment from "./components/shipping/payment/Payment";
 import PlaceOrder from "./components/shipping/PlaceOrder";
 
 axios.defaults.baseURL = "http://localhost:5000";

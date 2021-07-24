@@ -34,7 +34,7 @@ const UserAddress = (props) => {
         dispatch(
             saveAddress({ username, address_line, city, pin_cod, country, id })
         );
-        props.history.push("/shipping/payment"); 
+        props.history.push("/shipping/placeorder");
     };
     return (
         <div className="w-3/4 mx-auto mt-16 flex flex-col justify-center items-center">
