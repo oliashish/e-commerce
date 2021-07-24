@@ -9,6 +9,8 @@ import {
     SIGNUP_SUCCESS,
 } from "../actionConstants";
 
+
+
 const authReducer = (state = {}, action) => {
     switch (action.type) {
         case SIGNUP_REQUEST:

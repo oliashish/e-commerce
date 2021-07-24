@@ -3,8 +3,10 @@ import { SaveuserAddress } from "../../helper/api/userAddress";
 
 import {
     ADD_TO_CART,
+    EMPTY_CART,
     REMOVE_FROM_CART,
     SAVE_ADDRESS,
+    SAVE_ADDRESS_ERROR,
 } from "../actionConstants";
 
 export const addToCart = (productId, qty) => {
@@ -45,6 +47,15 @@ export const saveAddress = (data) => {
                 type: SAVE_ADDRESS,
                 payload: userAddress.data,
             });
+        } else {
+            dispatch({
+                type: SAVE_ADDRESS_ERROR,
+                payload: "something went wrong try again...",
+            });
         }
     };
+};
+
+export const emptyCart = () => {
+    return async (dispatch) => dispatch({ type: EMPTY_CART });
 };

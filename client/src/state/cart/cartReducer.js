@@ -1,7 +1,9 @@
 import {
     ADD_TO_CART,
+    EMPTY_CART,
     REMOVE_FROM_CART,
     SAVE_ADDRESS,
+    SAVE_ADDRESS_ERROR,
 } from "../actionConstants";
 
 export const cartReducer = (state = { cartItems: [] }, action) => {
@@ -33,7 +35,17 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
         case SAVE_ADDRESS:
             return {
                 ...state,
-                shippingAddress: action.payload,
+                shippingAddress: [action.payload],
+            };
+        case SAVE_ADDRESS_ERROR:
+            return {
+                ...state,
+                address_error: action.payload,
+            };
+        case EMPTY_CART:
+            return {
+                cartItems: [],
+                shippingAddress: [],
             };
         default:
             return state;

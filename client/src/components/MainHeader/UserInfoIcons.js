@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { ShoppingCartOutlined, ArrowDropDownSharp } from "@material-ui/icons";
 import { logout } from "../../state/auth/authAction";
+import { emptyCart } from "../../state/cart/cartAction";
 
 const UserInfoIcons = (props) => {
     const { cartItems } = useSelector((state) => state.cart);
@@ -11,10 +12,13 @@ const UserInfoIcons = (props) => {
     const [dropdown, setDropdown] = useState(false);
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const logoutHandler = () => {
         setDropdown(false);
         dispatch(logout());
+        dispatch(emptyCart());
+        history.push("/");
     };
     return (
         <div className="flex justify-between aligns-center">
