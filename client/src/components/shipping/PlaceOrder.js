@@ -23,11 +23,12 @@ export const Cart = (props) => {
         dispatch(removeFromCart(id));
     };
     const checkoutHandler = () => {
-        props.history.push(`/login?redirect=shipping/address`);
+        props.history.push(`/shipping/payment`);
     };
     
     return (
         <>
+            {shippingAddress}
             <h1 className="text-3xl my-8 ml-8 text-red-800">Order Summary</h1>
             <div className="w-11/12 mx-auto flex flex-row justify-between">
                 <div className="w-8/12 flex flex-col justify-center">
