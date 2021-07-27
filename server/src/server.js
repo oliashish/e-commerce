@@ -4,11 +4,12 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 require("dotenv").config({ path: "../.env" });
+const ngrok = require("ngrok");
 
 // routes and db imports
 const db = require("./database/dbConnection");
 const auth = require("./routes/auth/authRoute");
-const payment = require("./routes/payment/stripe");
+const payment = require("./routes/payment/razorpay");
 const product = require("./routes/products/product");
 const user = require("./routes/users/user");
 
@@ -28,9 +29,7 @@ app.use(cookieParser());
 app.use(
     session({
         key: "accessToken",
-        secret:
-            process.env.JWT_ACCESS_TOKEN_KEY ||
-            "hshkbfauebkwuegb8293t92832bfweufwefbwjfweiouf",
+        secret: process.env.JWT_ACCESS_TOKEN_KEY,
         resave: false,
         saveUninitialized: false,
         cookie: {
@@ -48,16 +47,23 @@ app.use("/api/authenticate", auth);
 app.use("/api/payments", payment);
 app.use("/api/products", product);
 app.use("/api/user/", user);
-    
+
 // rendering react frontend from client directory
 
-// if (process.env.NODE_ENV === "production") {
-//     app.use(express.static("../../client/build"));
-// }
-// app.get("*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "../../client/build/index.html"));
-// });
-
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("../../client/build"));
+}
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../../client/build/index.html"));
+});
+// ngrok
+//     .connect({
+//         proto: "http",
+//         addr: 5000,
+//     })
+//     .then((url) => {
+//         console.log(url);
+//     });
 app.listen(PORT, () => {
     console.log(`running on port ${PORT}`);
 });

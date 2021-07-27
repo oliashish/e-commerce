@@ -1,7 +1,7 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-    class OrderDetail extends Model {
+    class Cart extends Model {
         static associate({ User, Product }) {
             this.belongsTo(User, {
                 foreignKey: "user_id",
@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
             });
         }
     }
-    OrderDetail.init(
+    Cart.init(
         {
             id: {
                 type: DataTypes.UUID,
@@ -20,28 +20,16 @@ module.exports = (sequelize, DataTypes) => {
                 primaryKey: true,
                 unique: true,
             },
-            amount: {
+            qty: {
                 type: DataTypes.INTEGER,
-                allowNull: false,
-            },
-            payment_id: {
-                type: DataTypes.BIGINT,
-                allowNull: false,
-            },
-            signature: {
-                type: DataTypes.BIGINT,
-                allowNull: false,
-            },
-            order_id: {
-                type: DataTypes.BIGINT,
                 allowNull: false,
             },
         },
         {
             sequelize,
-            tableName: "order_detail",
-            modelName: "OrderDetail",
+            tableName: "cart",
+            modelName: "Cart",
         }
     );
-    return OrderDetail;
+    return Cart;
 };

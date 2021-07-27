@@ -2,12 +2,13 @@ const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
     class Product extends Model {
-        static associate({ Seller, Review, OrderDetail }) {
+        static associate({ Seller, Review, OrderDetail, Cart }) {
             this.belongsTo(Seller, {
                 foreignKey: "seller_id",
             });
             this.hasMany(Review);
             this.hasMany(OrderDetail);
+            this.hasOne(Cart);
         }
     }
     Product.init(
@@ -24,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false,
             },
             image: {
-                type: DataTypes.BLOB,
+                type: DataTypes.STRING,
                 allowNull: false,
             },
             desc: {
@@ -41,8 +42,8 @@ module.exports = (sequelize, DataTypes) => {
             },
             category: {
                 type: DataTypes.STRING,
-                allowNull: false
-            },  
+                allowNull: false,
+            },
             sku: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
