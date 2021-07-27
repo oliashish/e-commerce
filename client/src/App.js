@@ -14,7 +14,7 @@ import UserAddress from "./components/shipping/UserAddress";
 import Payment from "./components/shipping/payment/Payment";
 import PlaceOrder from "./components/shipping/PlaceOrder";
 
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://aura-apex.herokuapp.com";
 axios.defaults.withCredentials = true;
 
 const App = (props) => {

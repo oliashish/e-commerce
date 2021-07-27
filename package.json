@@ -38,9 +38,5 @@
         "sequelize": "^6.6.4",
         "stripe": "^8.157.0",
         "uuid": "^8.3.2"
-    },
-    "devDependencies": {
-        "ngrok": "^4.0.1",
-        "nodemon": "^2.0.12"
     }
 }
