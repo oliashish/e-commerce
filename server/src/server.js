@@ -4,7 +4,6 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 require("dotenv").config({ path: "../.env" });
-const ngrok = require("ngrok");
 const compression = require("compression");
 
 // routes and db imports
