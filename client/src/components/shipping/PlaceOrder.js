@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Message from "../../components/load/Message";
+// import Message from "../../components/load/Message";
 import { addToCart, removeFromCart } from "../../state/cart/cartAction";
 
 export const Cart = (props) => {
@@ -23,39 +23,33 @@ export const Cart = (props) => {
         dispatch(removeFromCart(id));
     };
     const checkoutHandler = () => {
-        props.history.push(`/shipping/payment`);
+        props.history.push(`/shipping/payment`, [cartItems]);
     };
-    
+
     return (
         <>
-            {shippingAddress}
             <h1 className="text-3xl my-8 ml-8 text-red-800">Order Summary</h1>
             <div className="w-11/12 mx-auto flex flex-row justify-between">
                 <div className="w-8/12 flex flex-col justify-center">
-                    <div className="shadow-xl flex flex-row justify-between">
-                        <span className="w-1/2 pl-4 border-r-2">
-                            <h1 className="text-xl font-semibold">Shipping</h1>
-                            <h1 className="text-lg font-medium mt-2">
-                                {shippingAddress[
-                                    shippingAddress.length - 1
-                                ].username.toUpperCase()}
-                            </h1>
-                            <h3 className="text-lg">
-                                {
-                                    shippingAddress[shippingAddress.length - 1]
-                                        .address_line
-                                }
-                            </h3>
-                            <h3 className="text-sm font-medium">
-                                {
-                                    shippingAddress[shippingAddress.length - 1]
-                                        .pin_cod
-                                }
-                            </h3>
-                        </span>
-                        <span className="w-1/2 pl-4">
-                            <h1 className="text-xl font-semibold">Billing</h1>
-                        </span>
+                    <div className="shadow-xl flex flex-col pl-12 ml-2 justify-between">
+                        <h1 className="text-xl font-semibold">Shipping</h1>
+                        <h1 className="text-lg font-medium mt-2">
+                            {shippingAddress[
+                                shippingAddress.length - 1
+                            ].username.toUpperCase()}
+                        </h1>
+                        <h3 className="text-lg">
+                            {
+                                shippingAddress[shippingAddress.length - 1]
+                                    .address_line
+                            }
+                        </h3>
+                        <h3 className="text-sm font-medium">
+                            {
+                                shippingAddress[shippingAddress.length - 1]
+                                    .pin_cod
+                            }
+                        </h3>
                     </div>
                     <div className="w-full mt-8">
                         <ul className="w-full">

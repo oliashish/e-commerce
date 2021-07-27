@@ -7,31 +7,22 @@ const UserAddress = (props) => {
 
     const { userInfo } = useSelector((state) => state.auth);
     const { shippingAddress } = useSelector((state) => state.cart);
-    const addressLength = shippingAddress.length - 1;
 
     const history = useHistory();
     if (!userInfo) {
         history.push("/login");
     }
 
-    const [username, setName] = useState(
-        shippingAddress[addressLength].username || ""
-    );
-    const [address_line, setAddress] = useState(
-        shippingAddress[addressLength].address_line || ""
-    );
-    const [city, setCity] = useState(shippingAddress[addressLength].city);
-    const [pin_cod, setPincode] = useState(
-        shippingAddress[addressLength].pin_cod || ""
-    );
-    const [country, setCountry] = useState(
-        shippingAddress[addressLength].country || ""
-    );
+    const [username, setName] = useState("");
+    const [address_line, setAddress] = useState("");
+    const [city, setCity] = useState("");
+    const [pin_cod, setPincode] = useState("");
+    const [country, setCountry] = useState("");
 
     const submitHandler = (e) => {
         e.preventDefault();
         const { id } = userInfo;
-        dispatch(
+        dispatch(   
             saveAddress({ username, address_line, city, pin_cod, country, id })
         );
         props.history.push("/shipping/placeorder");
