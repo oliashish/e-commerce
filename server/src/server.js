@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 require("dotenv").config({ path: "../.env" });
 const ngrok = require("ngrok");
+const compression = require("compression");
 
 // routes and db imports
 const db = require("./database/dbConnection");
@@ -37,6 +38,7 @@ app.use(
         },
     })
 );
+app.use(compression());
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../../client/build")));
@@ -56,14 +58,7 @@ if (process.env.NODE_ENV === "production") {
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "../../client/build/index.html"));
 });
-// ngrok
-//     .connect({
-//         proto: "http",
-//         addr: 5000,
-//     })
-//     .then((url) => {
-//         console.log(url);
-//     });
+console.log(process.env.NODE_ENV);
 app.listen(PORT, () => {
     console.log(`running on port ${PORT}`);
 });
