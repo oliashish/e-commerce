@@ -12,7 +12,7 @@ const createProduct = async (body, image) => {
             brand,
             price,
             sku,
-            category
+            category,
         });
         return product;
     } catch (err) {
@@ -31,8 +31,8 @@ const GetProductById = async (id) => {
     try {
         const product = await Product.findByPk(id);
         return product;
-    }catch(err) {
-        throw err
+    } catch (err) {
+        throw err.message;
     }
 };
 
