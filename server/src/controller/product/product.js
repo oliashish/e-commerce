@@ -22,12 +22,21 @@ const createProduct = async (body, image) => {
 const getAll = async () => {
     try {
         const products = await Product.findAll();
+
         return products;
     } catch (err) {
         throw err;
     }
 };
 const GetProductById = async (id) => {
+    try {
+        const product = await Product.findByPk(id);
+        return product;
+    } catch (err) {
+        throw err.message;
+    }
+};
+const GetProductByCategory = async (id) => {
     try {
         const product = await Product.findByPk(id);
         return product;
@@ -46,4 +55,5 @@ module.exports = {
     GetProductById,
     updateProduct,
     deleteProduct,
+    GetProductByCategory,
 };
