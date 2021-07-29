@@ -20,7 +20,7 @@ const ProductItems = ({ products }) => {
                                     <img
                                         alt={product.name}
                                         className="object-cover object-center w-full h-full block"
-                                        src={`./images/${product.image}`}
+                                        src={product.image}
                                     />
                                 </Link>
                                 <div className="mt-4">
