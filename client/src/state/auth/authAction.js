@@ -13,7 +13,7 @@ const signup = (data) => {
     return async (dispatch) => {
         dispatch({ type: SIGNUP_REQUEST });
         const newUser = await SignUp(data);
-        console.log(newUser.data.id);
+    
         if (newUser.status === 200) {
             dispatch({
                 type: SIGNUP_SUCCESS,

@@ -16,9 +16,6 @@ paymentRoute.post("/verify/razorpaysign", (req, res) => {
         .update(JSON.stringify(req.body))
         .digest("hex");
 
-    console.log(hash);
-    console.log(req.headers["x-razorpay-signature"]);
-
     if (hash === req.headers["x-razorpay-signature"]) {
         // save payment info to database and
         res.send({ message: "payment successfull" });

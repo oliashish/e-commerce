@@ -11,7 +11,7 @@ const displayRazorpay = async (amount, shippingAddress, userInfo) => {
     const { data } = await Axios.post("/api/payments/pay", {
         amountTotal: amount,
     });
-    console.log("data recieved is : ", data);
+  
     const razorpay_options = {
         key: process.env.EACT_APP_RAZORPAY_SECRET_KEY,
         amount: data.amuont,

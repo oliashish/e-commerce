@@ -13,7 +13,8 @@ const Home = () => {
     const dispatch = useDispatch();
     const productList = useSelector((state) => state.productList);
     const { loading, products, error } = productList;
-    
+
+   
     useEffect(() => {
         dispatch(productAction());
     }, [dispatch]);

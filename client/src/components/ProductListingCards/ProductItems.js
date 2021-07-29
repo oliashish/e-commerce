@@ -3,6 +3,7 @@ import { RatingStar } from "rating-star";
 import { Link } from "react-router-dom";
 
 const ProductItems = ({ products }) => {
+  
     return (
         <section className="text-gray-600 body-font flex justify-around items-center flex-wrap p-5">
             {products.map((product) => {
@@ -20,7 +21,7 @@ const ProductItems = ({ products }) => {
                                     <img
                                         alt={product.name}
                                         className="object-cover object-center w-full h-full block"
-                                        src={`./images/${product.image}`}
+                                        src={product.image}
                                     />
                                 </Link>
                                 <div className="mt-4">
@@ -42,7 +43,7 @@ const ProductItems = ({ products }) => {
                                     <span>
                                         {Math.floor(Math.random() * 500)}
                                     </span>
-                                    <p className="mt-1">{product.price}</p>
+                                    <p className="mt-1 text-xl font-medium">{product.price}</p>
                                 </div>
                             </div>
                         </div>
