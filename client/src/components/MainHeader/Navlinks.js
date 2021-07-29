@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navlinks = () => {
-    const NavLinks = ["Home", "Mens", "Womens", "Kids", "Beauty"];
+    const NavLinks = ["Home", "Mens", "Womens", "Kids"];
     return (
         <div className="pr-8 md:flex hidden">
             {NavLinks.map((link) => {

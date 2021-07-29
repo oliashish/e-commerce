@@ -8,7 +8,7 @@ const razorpay = new Razorpay({
 
 const Pay = async (data) => {
     const { amountTotal } = data;
-    console.log(data.amountTotal);
+  
     const payment_capture = 1;
     const currency = "INR";
     const amount = amountTotal;
@@ -24,7 +24,7 @@ const Pay = async (data) => {
         const response = await razorpay.orders.create(options);
         return response;
     } catch (err) {
-        console.log(err.message);
+       
     }
 };
 
