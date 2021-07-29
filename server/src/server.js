@@ -40,6 +40,7 @@ app.use(
 app.use(compression());
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static("../../client/public/images/"));
 
 // routing
 
@@ -47,13 +48,14 @@ app.use("/api/authenticate", auth);
 app.use("/api/payments", payment);
 app.use("/api/products", product);
 app.use("/api/user/", user);
+app.use(express.static(path.join(__dirname, "../../client/build")));
 
 // rendering react frontend from client directory
 
 if (process.env.NODE_ENV === "production") {
-    app.use("/public/uploads/", express.static("../../client/public/images/"));
+    app.use(express.static("../../client/build"));
 }
-app.get("*", (req, res) => {
+app.use("*", (req, res) => {
     res.send(path.join(__dirname, "../../client/build/index.html"));
 });
 
