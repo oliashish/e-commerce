@@ -59,7 +59,7 @@ export const Cart = (props) => {
                                         <div className="flex flex-row items-center border-b-2 pl-8 my-4">
                                             <div className="w-36  p-4">
                                                 <img
-                                                    src={`/uploads/${item.image}`}
+                                                    src={`./images/${item.image}`}
                                                     alt={item.name}
                                                 />
                                             </div>
