@@ -26,6 +26,7 @@ const Payment = (props) => {
                 shippingAddress,
                 userInfo
             );
+            return data;
         }
 
         payment();
