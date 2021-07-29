@@ -46,7 +46,10 @@ export const Cart = (props) => {
                             <li key={item.id}>
                                 <div className="flex flex-row items-center border-b-2 pl-8 ml-8 my-4">
                                     <div className="w-36  p-4">
-                                        <img src={item.image} alt={item.name} />
+                                        <img
+                                            src={`../../uploads/${item.image}`}
+                                            alt={item.name}
+                                        />
                                     </div>
                                     <div className="w-1/2 flex flex-col justify-center items-center ">
                                         <Link
