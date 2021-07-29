@@ -11,16 +11,16 @@ const ProductItems = ({ products }) => {
                         className="sm:w-full md:w-1/3 lg:w-1/5 m-5"
                         key={product.id}
                     >
-                    <div className="flex flex-wrap -m-4">
+                        <div className="flex flex-wrap -m-4">
                             <div className="lg:w-full md:w-full p-4 w-full">
                                 <Link
                                     to={`/product/${product.id}`}
                                     className="block relative h-48 rounded overflow-hidden"
                                 >
                                     <img
-                                        alt="ecommerce"
+                                        alt={product.name}
                                         className="object-cover object-center w-full h-full block"
-                                        src={product.image}
+                                        src={`/uploads/${product.image}`}
                                     />
                                 </Link>
                                 <div className="mt-4">

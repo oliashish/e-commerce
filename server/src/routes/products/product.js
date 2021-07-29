@@ -1,3 +1,4 @@
+const fs = require("fs");
 const route = require("express").Router();
 const upload = require("../../helper/multerStorage");
 
@@ -12,8 +13,7 @@ const {
 // create new product - only admin access
 route.post("/item", upload.single("image"), async (req, res) => {
     const body = req.body;
-    const image = req.file;
-
+    const image = req.file.filename;
     const product = await createProduct(body, image);
     res.send(product);
 });

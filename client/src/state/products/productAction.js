@@ -13,7 +13,7 @@ export const productAction = () => {
     return async (dispatch) => {
         dispatch({ type: PRODUCT_REQUEST });
 
-        // todo - get call here for product from backend and before that dispatch product_request
+        
 
         try {
             const products = await getAllProduct(); // axios call here
