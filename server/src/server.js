@@ -54,9 +54,7 @@ if (process.env.NODE_ENV === "production") {
     app.use("/public/uploads/", express.static("../../client/public/images/"));
 }
 app.get("*", (req, res) => {
-    res.send(
-        path.join(__dirname, ".." + ".." + "client" + "build" + "index.html")
-    );
+    res.send(path.join(__dirname, "../../client/build/index.html"));
 });
 
 app.listen(PORT, () => {
