@@ -6,7 +6,6 @@ const UserAddress = (props) => {
     const dispatch = useDispatch();
 
     const { userInfo } = useSelector((state) => state.auth);
-    const { shippingAddress } = useSelector((state) => state.cart);
 
     const history = useHistory();
     if (!userInfo) {
@@ -22,7 +21,7 @@ const UserAddress = (props) => {
     const submitHandler = (e) => {
         e.preventDefault();
         const { id } = userInfo;
-        dispatch(   
+        dispatch(
             saveAddress({ username, address_line, city, pin_cod, country, id })
         );
         props.history.push("/shipping/placeorder");
