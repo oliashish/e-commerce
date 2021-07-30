@@ -15,7 +15,9 @@ const {
 route.post("/item", upload.single("image"), async (req, res) => {
     const body = req.body;
     const image = fs.readFileSync(req.file.path);
+    console.log("image : ", image);
     const product = await createProduct(body, image);
+    console.log("product : ", product);
     res.send(product);
 });
 
