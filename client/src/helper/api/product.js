@@ -4,7 +4,6 @@ import image_to_base64 from "../base64/image_to_base64";
 export const getAllProduct = async () => {
     try {
         const { data } = await Axios.get("/api/products/items");
-
         const ProductItems = data.map((item) => {
             const imagebase64 = image_to_base64(item.image);
             item.image = imagebase64;

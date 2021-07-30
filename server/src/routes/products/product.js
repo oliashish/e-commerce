@@ -8,6 +8,7 @@ const {
     GetProductById,
     updateProduct,
     deleteProduct,
+    GetSearchProduct,
 } = require("../../controller/product/product.js");
 
 // create new product - only admin access
@@ -28,6 +29,12 @@ route.get("/items", async (req, res) => {
 route.get("/items/:id", async (req, res) => {
     const product = await GetProductById(req.params.id);
     res.send(product);
+});
+
+// search products
+route.get("/search/:searchTerm", async (req, res) => {
+    const products = await GetSearchProduct(req.params.searchTerm);
+    res.send(products);
 });
 
 // update product - only admin access
