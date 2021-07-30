@@ -1,8 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { openSidebar } from "../../state/sidebar/sidebarAction";
 
 const ToggleButton = () => {
+    const dispatch = useDispatch();
+
+    const toggleHandling = () => {
+        dispatch(openSidebar());
+    };
+
     return (
-        <div className="px-4 cursor-pointer md:hidden">
+        <div className="px-4 cursor-pointer md:hidden" onClick={toggleHandling}>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"

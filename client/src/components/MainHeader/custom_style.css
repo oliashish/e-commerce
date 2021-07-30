@@ -1,0 +1,12 @@
+@media (max-width: 768px) {
+    .width-adjust {
+        width: 100px !important;
+        font-size: 12px;
+    }
+    .search-icon {
+        width: 30px !important;
+    }
+    .cart-icon-sizing {
+        width: 30px !important;
+    }
+}

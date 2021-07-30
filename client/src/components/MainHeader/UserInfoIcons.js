@@ -23,7 +23,10 @@ const UserInfoIcons = (props) => {
     return (
         <div className="flex justify-between aligns-center">
             <Link to="/cart">
-                <ShoppingCartOutlined fontSize="large"></ShoppingCartOutlined>
+                <ShoppingCartOutlined
+                    fontSize="large"
+                    className="cart-icon-sizing"
+                ></ShoppingCartOutlined>
                 {cartItems.length > 0 && (
                     <span className="bg-red-300 mr-3 text-lg font-medium text-center px-2 rounded-full">
                         {cartItems.length}
@@ -32,7 +35,7 @@ const UserInfoIcons = (props) => {
             </Link>
 
             {userInfo ? (
-                <div className="ml-4 text-xl font-semibold shadow-xl">
+                <div className="ml-4 text-xl md:block hidden font-semibold shadow-xl">
                     <Link onClick={() => setDropdown(!dropdown)}>
                         {userInfo.username[0].toUpperCase()}
                         <ArrowDropDownSharp />
