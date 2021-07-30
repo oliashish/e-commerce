@@ -9,7 +9,7 @@ const Navlinks = () => {
                 return (
                     <Link
                         to={link.toLowerCase()}
-                        className="p-4 text-xl"
+                        className="p-4 text-lg"
                         key={link.toLowerCase()}
                     >
                         <h3> {link} </h3>

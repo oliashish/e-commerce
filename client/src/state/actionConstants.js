@@ -33,3 +33,7 @@ export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const EMPTY_CART = "EMPTY_CART";
 export const SAVE_ADDRESS = "SAVE_ADDRESS";
 export const SAVE_ADDRESS_ERROR = "SAVE_ADDRESS_ERROR";
+
+// sidebar
+export const OPEN_SIDEBAR = "OPEN_SIDEBAR";
+export const CLOSE_SIDEBAR = "CLOSE_SIDEBAR";
