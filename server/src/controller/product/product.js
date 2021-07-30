@@ -1,5 +1,6 @@
 // require product model
 const { Product } = require("../../models");
+const { Op } = require("sequelize");
 
 const createProduct = async (body, image) => {
     const { name, seller_id, price, brand, sku, desc, category } = body;
@@ -45,6 +46,18 @@ const GetProductByCategory = async (id) => {
     }
 };
 
+const GetSearchProduct = async (searchTerm) => {
+    const product = await Product.findAll({
+        where: {
+            name: {
+                [Op.like]: `%${searchTerm}%`,
+            },
+        },
+    });
+
+    return product;
+};
+
 // only admin access
 const updateProduct = () => {};
 const deleteProduct = () => {};
@@ -56,4 +69,5 @@ module.exports = {
     updateProduct,
     deleteProduct,
     GetProductByCategory,
+    GetSearchProduct,
 };
