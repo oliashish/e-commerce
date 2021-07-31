@@ -9,7 +9,7 @@ import SearchItem from "./SearchItem";
 
 const Header = () => {
     return (
-        <header className="mt-0 border-b-2">
+        <header className="mt-0 border-b-2 z-0">
             <nav
                 className="flex justify-around items-center shadow-sm"
                 role="navigation"

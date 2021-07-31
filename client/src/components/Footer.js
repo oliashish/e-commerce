@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
     return (
-        <footer className="text-gray-600 body-font border-t-2 mt-20">
+        <footer className="text-gray-600 body-font border-t-2 mt-20 mb-0">
             <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
                 <a
                     href="/"

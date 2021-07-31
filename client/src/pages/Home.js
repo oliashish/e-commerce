@@ -14,16 +14,13 @@ const Home = () => {
     const productList = useSelector((state) => state.productList);
     const { loading, products, error } = productList;
 
-   
     useEffect(() => {
         dispatch(productAction());
     }, [dispatch]);
     return (
         <div className="home-page">
             {loading ? (
-                <Loading />
-            ) : error ? (
-                <Message>{error}</Message>
+                <Loading color="black" loading={loading} size={50} />
             ) : (
                 <ProductItems products={products} />
             )}
