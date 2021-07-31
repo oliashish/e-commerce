@@ -10,3 +10,9 @@
         width: 30px !important;
     }
 }
+.results {
+    margin-top: 10px;
+}
+.search-icon {
+    cursor: pointer;
+}

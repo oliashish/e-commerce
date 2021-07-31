@@ -8,7 +8,7 @@ const Navlinks = () => {
             {NavLinks.map((link) => {
                 return (
                     <Link
-                        to={link.toLowerCase()}
+                        to={link === "Home" ? "/" : link.toLowerCase()}
                         className="p-4 text-lg"
                         key={link.toLowerCase()}
                     >
