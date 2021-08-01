@@ -1,25 +1,22 @@
-import React, { lazy, Suspense } from "react";
+import React from "react";
 import axios from "axios";
 import { Switch, Route } from "react-router-dom";
 
-import "../src/styles/main.css";
+import "../src/styles/main.min.css";
 
 import Header from "./components/MainHeader/Header";
 import Home from "./pages/Home";
-
-const IndividualProductDetails = lazy(() =>
-    import("./components/ProductDetails/IndividualProductDetails")
-);
-const { Cart } = lazy(() => import("./pages/Cart/Cart"));
-const Login = lazy(() => import("./components/form/Login"));
-const Signup = lazy(() => import("./components/form/Signup"));
-const UserAddress = lazy(() => import("./components/shipping/UserAddress"));
-const Payment = lazy(() => import("./components/shipping/payment/Payment"));
-const PlaceOrder = lazy(() => import("./components/shipping/PlaceOrder"));
-const Category = lazy(() => import("./components/ProductDetails/Category"));
+import IndividualProductDetails from "./cmponents/ProductDetails/IndividualProductDetails";
+import Cart from "./pages/Cart/Cart";
+import Login from "./components/form/Login";
+import Signup from "./components/form/Signup";
+import UserAddress from "./components/shipping/UserAddress";
+import Payment from "./components/shipping/payment/Payment";
+import PlaceOrder from "./components/shipping/PlaceOrder";
+import Category from "./components/ProductDetails/Category";
 
 axios.defaults.baseURL = "https://aura-apex.herokuapp.com";
-// axios.defaults.baseURL = "http://localhost:5000";    
+// axios.defaults.baseURL = "http://localhost:5000";
 
 axios.defaults.withCredentials = true;
 
@@ -29,37 +26,32 @@ const App = (props) => {
             <Header />
             <Switch>
                 <Route exact path="/" component={Home} />
-                <Suspense fallback="">
-                    <Route exact path="/login" component={Login} />
 
-                    <Route exact path="/signup" component={Signup} />
+                <Route exact path="/login" component={Login} />
 
-                    <Route
-                        exact
-                        path="/product/:productId"
-                        component={IndividualProductDetails}
-                    />
+                <Route exact path="/signup" component={Signup} />
 
-                    <Route exact path="/:cat" component={Category} />
+                <Route
+                    exact
+                    path="/product/:productId"
+                    component={IndividualProductDetails}
+                />
 
-                    <Route exact path="/cart" component={Cart} />
+                <Route exact path="/:cat" component={Category} />
 
-                    <Route exact path="/cart/:productId?" component={Cart} />
+                <Route exact path="/cart" component={Cart} />
 
-                    <Route
-                        exact
-                        path="/shipping/address"
-                        component={UserAddress}
-                    />
+                <Route exact path="/cart/:productId?" component={Cart} />
 
-                    <Route exact path="/shipping/payment" component={Payment} />
+                <Route exact path="/shipping/address" component={UserAddress} />
 
-                    <Route
-                        exact
-                        path="/shipping/placeorder"
-                        component={PlaceOrder}
-                    />
-                </Suspense>
+                <Route exact path="/shipping/payment" component={Payment} />
+
+                <Route
+                    exact
+                    path="/shipping/placeorder"
+                    component={PlaceOrder}
+                />
             </Switch>
         </div>
     );
