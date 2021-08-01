@@ -10,3 +10,4 @@ function Loading({ color, loading, size }) {
 }
 
 export default Loading;
+    
