@@ -4,7 +4,6 @@ import { RatingStar } from "rating-star";
 import { useDispatch, useSelector } from "react-redux";
 import { detailsProductAction } from "../../state/products/productAction.js";
 import Loading from "../load/Loading.js";
-import Message from "../load/Message.js";
 
 import Fade from "react-reveal/Fade";
 

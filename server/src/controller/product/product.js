@@ -37,15 +37,6 @@ const GetProductById = async (id) => {
         throw err.message;
     }
 };
-const GetProductByCategory = async (id) => {
-    try {
-        const product = await Product.findByPk(id);
-        return product;
-    } catch (err) {
-        throw err.message;
-    }
-};
-
 const GetSearchProduct = async (searchTerm) => {
     const product = await Product.findAll({
         where: {
@@ -56,6 +47,14 @@ const GetSearchProduct = async (searchTerm) => {
     });
 
     return product;
+};
+const GetProductByCategory = async (cat) => {
+    const products = await Product.findAll({
+        where: {
+            category: cat,
+        },
+    });
+    return products;
 };
 
 // only admin access
@@ -70,4 +69,5 @@ module.exports = {
     deleteProduct,
     GetProductByCategory,
     GetSearchProduct,
+    GetProductByCategory,
 };

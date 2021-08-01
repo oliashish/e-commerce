@@ -7,16 +7,24 @@ import {
     PRODUCT_SUCCESS,
 } from "../actionConstants";
 
-import { getAllProduct, getProductById } from "../../helper/api/product";
+import {
+    getAllProduct,
+    getProductByCategory,
+    getProductById,
+} from "../../helper/api/product";
 
-export const productAction = () => {
+export const productAll = (cat) => {
     return async (dispatch) => {
         dispatch({ type: PRODUCT_REQUEST });
 
-        
-
         try {
-            const products = await getAllProduct(); // axios call here
+            let products;
+            if (cat) {
+                products = await getProductByCategory(cat);
+            } else {
+                products = await getAllProduct();
+            }
+
             dispatch({
                 type: PRODUCT_SUCCESS,
                 payload: products,

@@ -7,7 +7,10 @@ import {
     PRODUCT_SUCCESS,
 } from "../actionConstants";
 
-export const productReducer = (state = { products: [], loading: true },action) => {
+export const productReducer = (
+    state = { products: [], loading: true },
+    action
+) => {
     switch (action.type) {
         case PRODUCT_REQUEST:
             return { loading: true };
@@ -26,7 +29,7 @@ export const productReducer = (state = { products: [], loading: true },action) =
     }
 };
 
-export const productDetailReducer = (state = { product: {} },action) => {
+export const productDetailReducer = (state = { product: {} }, action) => {
     switch (action.type) {
         case INDIVIDUAL_PRODUCT_REQUEST:
             return { loading: true };

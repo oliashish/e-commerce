@@ -21,7 +21,7 @@ const SearchItem = () => {
         setSearchItems([]);
     };
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col h-10">
             <div className="flex">
                 <input
                     type="text"
@@ -38,12 +38,12 @@ const SearchItem = () => {
                 />
             </div>
             {searchItems.length > 0 ? (
-                <div className="results z-10 overflow-visible">
+                <div className="results z-10 overflow-visible bg-white rounded-b-xl">
                     {searchItems.map((item) => {
                         return (
                             <Link to={`/product/${item.id}`}>
                                 <h1
-                                    className="text-lg border-b-2 pl-2 py-1 border-gray-400 hover:bg-gray-600 hover:text-gray-200"
+                                    className="search-results text-lg border-b-2 pl-2 py-1 rounded-b-xl border-gray-200 hover:bg-gray-600 hover:text-gray-200"
                                     onClick={clearSearch}
                                 >
                                     {item.name}

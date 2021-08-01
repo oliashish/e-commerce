@@ -2,20 +2,21 @@ import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import Footer from "../components/Footer";
-import ProductItems from "../components/ProductListingCards/ProductItems";
-import Loading from "../components/load/Loading";
+import Footer from "../Footer";
+import ProductItems from "../ProductListingCards/ProductItems";
+import Loading from "../load/Loading";
 
-import { productAll } from "../state/products/productAction";
+import { productAll } from "../../state/products/productAction";
 
-const Home = () => {
+const Category = (props) => {
+    const { cat } = props.match.params;
     const dispatch = useDispatch();
     const productList = useSelector((state) => state.productList);
     const { loading, products } = productList;
 
     useEffect(() => {
-        dispatch(productAll());
-    }, [dispatch]);
+        dispatch(productAll(cat));
+    }, [dispatch, cat]);
     return (
         <div className="home-page">
             {loading ? (
@@ -30,4 +31,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Category;
