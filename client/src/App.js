@@ -6,7 +6,7 @@ import "../src/styles/main.min.css";
 
 import Header from "./components/MainHeader/Header";
 import Home from "./pages/Home";
-import IndividualProductDetails from "./components/ProductDetails/IndividualProductDetails";
+import IndividualProductDetails from "./cmponents/ProductDetails/IndividualProductDetails";
 import Cart from "./pages/Cart/Cart";
 import Login from "./components/form/Login";
 import Signup from "./components/form/Signup";
