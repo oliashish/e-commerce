@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+
 @media (max-width: 768px) {
     .width-adjust {
         width: 100px !important;
@@ -15,4 +17,7 @@
 }
 .search-icon {
     cursor: pointer;
+}
+.search-results {
+    font-family: "Poppins", sans-serif;
 }

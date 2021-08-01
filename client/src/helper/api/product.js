@@ -30,3 +30,23 @@ export const getProductById = async (id) => {
         throw err;
     }
 };
+
+export const getProductByCategory = async (cat) => {
+    try {
+        const { data } = await Axios.get(`/api/products/category/${cat}`);
+        const Products = data;
+
+        const ProductsByCategory = Products.map((product) => {
+            const imagebase64 = image_to_base64(product.image);
+            product.image = imagebase64;
+            return product;
+        });
+        if (ProductsByCategory) {
+           
+            return ProductsByCategory;
+        }
+        return Products;
+    } catch (err) {
+        throw err;
+    }
+};

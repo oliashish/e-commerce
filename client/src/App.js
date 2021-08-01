@@ -13,6 +13,7 @@ import Signup from "./components/form/Signup";
 import UserAddress from "./components/shipping/UserAddress";
 import Payment from "./components/shipping/payment/Payment";
 import PlaceOrder from "./components/shipping/PlaceOrder";
+import Category from "./components/ProductDetails/Category";
 
 axios.defaults.baseURL = "https://aura-apex.herokuapp.com";
 // axios.defaults.baseURL = "http://localhost:5000";
@@ -33,6 +34,8 @@ const App = (props) => {
                     path="/product/:productId"
                     component={IndividualProductDetails}
                 />
+                <Route exact path="/category/:cat" component={Category} />
+
                 <Route exact path="/cart" component={Cart} />
                 <Route exact path="/cart/:productId?" component={Cart} />
                 <Route exact path="/shipping/address" component={UserAddress} />
