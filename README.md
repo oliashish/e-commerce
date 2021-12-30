@@ -1,4 +1,4 @@
-# e-commerce
+# E-commerce demo website
 
 - e-commerce site with basic functionality of user auth, checkout, payment gateways, state management.
 - few snaps of the app.
